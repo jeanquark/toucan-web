@@ -1,17 +1,13 @@
 <template>
-    <v-app id="app">
+    
         <v-row no-gutters justify="center" class="mt-2 mb-5">
             <v-col cols="12" md="8" lg="6" class="px-2">
                 <h1 class="text-center mb-4">Toucan Web</h1>
-                <p class="text-body-1" style="line-height: 2.0em"></p>
-                <v-btn color="primary">Button</v-btn>
-                {{ $t('motto') }}
             </v-col>
         </v-row>
         <v-row>
-            <v-parallax src="/images/image2-2600-min.jpg" max-height="600" loading="eager"
-                alt="peope working in office (cartoonish)"></v-parallax>
-            <!-- <v-parallax src="https://cdn.vuetifyjs.com/images/parallax/material.jpg"></v-parallax> -->
+            <!-- <v-parallax src="/images/image2-2600-min.jpg" max-height="600" loading="eager"
+                alt="peope working in office (cartoonish)"></v-parallax> -->
             <!-- <v-parallax
                 srcset="/images/image2-800-min.jpg 800w,
                             /images/image2-1200-min.jpg 1200w,
@@ -24,14 +20,22 @@
                 alt="peope working in office (cartoonish)"
             ></v-parallax> -->
         </v-row>
+        <!-- <what-we-do></what-we-do> -->
+        <!-- <our-packages></our-packages> -->
+        <!-- <testimonials /> -->
         <v-row>
-            <what-we-do></what-we-do>
+        <team />
+        <contact />
         </v-row>
-    </v-app>
+    <!-- </v-app> -->
 </template>
 
 <script setup lang="ts">
 import WhatWeDo from '~/components/WhatWeDo.vue'
+import OurPackages from '~/components/Packages.vue'
+// import Testimonials from '~/components/Testimonials.vue'
+// import Team from '~/components/Team.vue'
+// import Contact from '~/components/Contact.vue'
 
 // definePageMeta({
 //     layout: "frontend",

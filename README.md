@@ -1,75 +1,55 @@
-# Nuxt 3 Minimal Starter
+# web-toucan
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+A <a href="https://nuxtjs.org/" target="_blank">Nuxt.js</a> static website. Includes contact form and auto deployment to GitHub Pages on every push to master branch through GitHub Actions.
 
-## Setup
+![homepage section 1](public/images/homepage_section1.jpg)
+<!-- ![homepage](public/images/homepage.jpg) -->
+<!-- ![homepage](public/images/homepage.jpg) -->
+<!-- ![homepage](public/images/homepage.jpg) -->
 
-Make sure to install the dependencies:
-
-```bash
-# npm
-npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
+## Build Setup
 
 ```bash
-# npm
-npm run dev
+# install dependencies
+$ npm install
 
-# pnpm
-pnpm run dev
+# serve with hot reload at localhost:3000
+# Node v16.20.2
+$ npm run dev
 
-# yarn
-yarn dev
+# build for production and launch server
+$ npm run build
+$ npm run start
 
-# bun
-bun run dev
+# generate static project
+$ npm run generate
 ```
 
-## Production
+For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
 
-Build the application for production:
+## Contact form configuration
 
-```bash
-# npm
-npm run build
+Sending emails from static websites is not as straightforward as with server-based sites. It is necessary to make use of third party functions. In this case, we use <a href="https://github.com/dwyl/learn-to-send-email-via-google-script-html-no-server" target="_blank">Google Apps Mail</a> which allows sending emails from any static HTML page. Messages are saved in a Google spreadsheet <a href="https://docs.google.com/spreadsheets/d/1LyC2WLXFU7_dV3WaLXtHP99vUANa6UL0qQFL0aD0fYs/edit#gid=0">here</a>.
 
-# pnpm
-pnpm run build
+## Routes configuration
 
-# yarn
-yarn build
-
-# bun
-bun run build
+```js
+// nuxt.config.js
+const routerBase =
+    process.env.DEPLOY_ENV === 'GH_PAGES'
+        ? {
+              router: {
+                  base: '/web-toucan/' // Deployment on jeanquark.github.io/web-toucan-github-hosting
+                  // base: '/' Deployment on custom domain
+              }
+          }
+        : {}
 ```
+## DNS config
 
-Locally preview production build:
+![dns_config](static/images/dns_config.jpg)
 
-```bash
-# npm
-npm run preview
 
-# pnpm
-pnpm run preview
+## Author
 
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+<a href="https://jmkleger.com" target="_blank">Jean-Marc Kleger</a>

@@ -12,57 +12,30 @@
             </v-card-text>
 
             <v-form ref="form" lazy-validation @submit.prevent="sendContactForm">
-                <v-text-field
-                    name="firstname"
-                    :label="`${$t('form.firstname')}`"
-                    :counter="32"
-                    :rules="[
-                        (v) => !!v || `${$t('form.firstname')} ${$t('validation.is_required')}`,
-                        (v) => (v && v.length <= 32) || `${$t('form.firstname')} ${$t('validation.max_length')} 32 ${$t('validation.characters')}`,
-                    ]"
-                    @focus="onFocus"
-                    v-model="form.firstname"
-                >
+
+                <v-text-field name="firstname" :label="`Firstname`" :counter="32" @update:focused="onFocus" :rules="[() => !!form.lastname || 'This field is required',
+                () => !!form.firstname && form.firstname.length <= 25 || 'Address must be less than 25 characters']"
+                    v-model="form.firstname">
                 </v-text-field>
 
-                <v-text-field
-                    name="lastname"
-                    :label="`${$t('form.lastname')}`"
-                    :counter="32"
-                    :rules="[
-                        (v) => !!v || `${$t('form.lastname')} ${$t('validation.is_required')}`,
-                        (v) => (v && v.length <= 32) || `${$t('form.lastname')} ${$t('validation.max_length')} 32 ${$t('validation.characters')}`,
-                    ]"
-                    @focus="onFocus"
-                    v-model="form.lastname"
-                >
+                <v-text-field name="lastname" :label="`${$t('form.lastname')}`" :counter="32" :rules="[() => !!form.lastname || 'This field is required',
+                () => !!form.lastname && form.lastname.length <= 25 || 'Address must be less than 25 characters']"
+                    @update:focused="onFocus" v-model="form.lastname">
                 </v-text-field>
 
-                <v-text-field
-                    name="email"
-                    :label="`${$t('form.email')}`"
+                <v-text-field name="email" :label="`${$t('form.email')}`"
                     :rules="[(v) => !!v || `${$t('form.email')} ${$t('validation.is_required')}`, (v) => /.+@.+\..+/.test(v) || `${$t('form.email')} ${$t('validation.is_valid')}`]"
-                    @focus="onFocus"
-                    v-model="form.email"
-                ></v-text-field>
+                    @update:focused="onFocus" v-model="form.email"></v-text-field>
 
-                <v-textarea
-                    name="message"
-                    rows="6"
-                    :label="`${$t('form.your_message')}`"
-                    :rules="[
-                        (v) => !!v || `${$t('form.your_message')} ${$t('validation.is_required')}`,
-                        (v) => (v && v.length <= 2048) || `${$t('form.your_message')} ${$t('validation.max_length')} 2048 ${$t('validation.characters')}`,
-                    ]"
-                    @focus="onFocus"
-                    v-model="form.message"
-                ></v-textarea>
+                <v-textarea name="message" rows="6" :label="`${$t('form.your_message')}`" :rules="[]" @focus="onFocus"
+                    v-model="form.message"></v-textarea>
                 <div class="my-2 text-center">
-                    <recaptcha @error="onError" @success="onSuccess" @expired="onExpired" />
+                    <!-- <recaptcha @error="onError" @success="onSuccess" @expired="onExpired" /> -->
                 </div>
                 <!-- <div class="text-center" v-if="!messageSentSuccess && !messageSentError"> -->
                 <div class="my-2 text-center">
-                    <v-btn color="secondary" type="submit" :disabled="!valid" :loading="loading">{{ $t('form.submit') }}</v-btn>
+                    <v-btn color="secondary" type="submit" :disabled="!valid" :loading="loading">{{ $t('form.submit')
+                    }}</v-btn>
                 </div>
             </v-form>
 
@@ -79,84 +52,161 @@
     </v-col>
 </template>
 
-<script>
-export default {
-    async mounted() {},
-    data() {
-        return {
-            loading: false,
-            messageInvalidCaptcha: false,
-            messageSentSuccess: false,
-            messageSentError: false,
-            form: {
-                firstname: '',
-                lastname: '',
-                email: '',
-                message: '',
-            },
-            valid: true,
-        }
-    },
-    computed: {},
-    methods: {
-        onFocus() {
-            this.messageInvalidCaptcha = false
-            this.messageSentSuccess = false
-            this.messageSentError = false
-        },
-        encodeHTML(s) {
-            return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;')
-        },
-        async sendContactForm() {
-            try {
-                const token = await this.$recaptcha.getResponse()
-                console.log('ReCaptcha token:', token)
-                const valid = this.$refs.form.validate()
-                console.log('valid: ', valid)
-                if (valid) {
-                    this.loading = true
-                    const res = await fetch('https://script.google.com/macros/s/AKfycbyUbXcwQHeGAjSrDHbIx84PcM1FCEs-S3SnwZjHKQ/exec', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/x-www-form-urlencoded',
-                        },
-                        body: new URLSearchParams({
-                            firstname: `${this.encodeHTML(this.form.firstname)}`,
-                            lastname: `${this.encodeHTML(this.form.lastname)}`,
-                            email: `${this.encodeHTML(this.form.email)}`,
-                            message: `${this.encodeHTML(this.form.message)}`,
-                        }),
-                    })
-                    await this.$recaptcha.reset()
+<script setup lang="ts">
 
-                    if (res.status === 200) {
-                        this.$refs.form.reset()
-                        this.messageInvalidCaptcha = false
-                        this.messageSentError = false
-                        this.messageSentSuccess = true
-                    }
-                }
-            } catch (error) {
-                console.log('error: ', error)
-                if (error == 'Failed to execute') {
-                    this.messageInvalidCaptcha = true
-                } else {
-                    this.messageSentSuccess = false
-                    this.messageSentError = true
-                }
-            } finally {
-                this.loading = false
-            }
-        },
-        onSuccess(token) {
-            console.log('Succeeded:', token)
-        },
-        onExpired() {
-            console.log('Expired')
-        },
-        onError(error) {
-            console.log('Error happened:', error)
-        },
-    },
+// Data
+const loading = ref(false)
+const messageInvalidCaptcha = ref(false)
+const messageSentSuccess = ref(false)
+const messageSentError = ref(false)
+let form = ref({
+    firstname: '',
+    lastname: '',
+    email: '',
+    message: ''
+})
+const valid = ref(true)
+
+// Methods
+const onFocus = () => {
+    messageInvalidCaptcha.value = false
+    messageSentSuccess.value = false
+    messageSentError.value = false
 }
+const encodeHTML = (s: string) => {
+    return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;')
+
+}
+
+const sendContactForm = async () => {
+    try {
+        // const token = await this.$recaptcha.getResponse()
+        // console.log('ReCaptcha token:', token)
+        console.log('sendContactForm')
+        const valid = form.value.validate()
+        console.log('valid: ', valid)
+        if (valid) {
+            loading.value = true
+            const res = await fetch('https://script.google.com/macros/s/AKfycbyUbXcwQHeGAjSrDHbIx84PcM1FCEs-S3SnwZjHKQ/exec', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: new URLSearchParams({
+                    firstname: `${encodeHTML(form.value.firstname)}`,
+                    lastname: `${encodeHTML(form.value.lastname)}`,
+                    email: `${encodeHTML(form.value.email)}`,
+                    message: `${encodeHTML(form.value.message)}`,
+                }),
+            })
+            // await this.$recaptcha.reset()
+
+            if (res.status === 200) {
+                form.value.reset()
+                messageInvalidCaptcha.value = false
+                messageSentError.value = false
+                messageSentSuccess.value = true
+            }
+        }
+    } catch (error) {
+        console.log('error: ', error)
+        if (error == 'Failed to execute') {
+            messageInvalidCaptcha.value = true
+        } else {
+            messageSentSuccess.value = false
+            messageSentError.value = true
+        }
+    } finally {
+        loading.value = false
+    }
+}
+const onSuccess = (token: string) => {
+    console.log('Succeeded:', token)
+}
+const onExpired = () => {
+    console.log('Expired')
+}
+const onError = (error: any) => {
+    console.log('Error happened:', error)
+}
+
+// export default {
+//     async mounted() {},
+//     data() {
+//         return {
+//             loading: false,
+//             messageInvalidCaptcha: false,
+//             messageSentSuccess: false,
+//             messageSentError: false,
+//             form: {
+//                 firstname: '',
+//                 lastname: '',
+//                 email: '',
+//                 message: '',
+//             },
+//             valid: true,
+//         }
+//     },
+//     computed: {},
+//     methods: {
+//         onFocus() {
+//             this.messageInvalidCaptcha = false
+//             this.messageSentSuccess = false
+//             this.messageSentError = false
+//         },
+//         encodeHTML(s) {
+//             return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;')
+//         },
+//         async sendContactForm() {
+//             try {
+//                 const token = await this.$recaptcha.getResponse()
+//                 console.log('ReCaptcha token:', token)
+//                 const valid = this.$refs.form.validate()
+//                 console.log('valid: ', valid)
+//                 if (valid) {
+//                     this.loading = true
+//                     const res = await fetch('https://script.google.com/macros/s/AKfycbyUbXcwQHeGAjSrDHbIx84PcM1FCEs-S3SnwZjHKQ/exec', {
+//                         method: 'POST',
+//                         headers: {
+//                             'Content-Type': 'application/x-www-form-urlencoded',
+//                         },
+//                         body: new URLSearchParams({
+//                             firstname: `${this.encodeHTML(this.form.firstname)}`,
+//                             lastname: `${this.encodeHTML(this.form.lastname)}`,
+//                             email: `${this.encodeHTML(this.form.email)}`,
+//                             message: `${this.encodeHTML(this.form.message)}`,
+//                         }),
+//                     })
+//                     await this.$recaptcha.reset()
+
+//                     if (res.status === 200) {
+//                         this.$refs.form.reset()
+//                         this.messageInvalidCaptcha = false
+//                         this.messageSentError = false
+//                         this.messageSentSuccess = true
+//                     }
+//                 }
+//             } catch (error) {
+//                 console.log('error: ', error)
+//                 if (error == 'Failed to execute') {
+//                     this.messageInvalidCaptcha = true
+//                 } else {
+//                     this.messageSentSuccess = false
+//                     this.messageSentError = true
+//                 }
+//             } finally {
+//                 this.loading = false
+//             }
+//         },
+//         onSuccess(token) {
+//             console.log('Succeeded:', token)
+//         },
+//         onExpired() {
+//             console.log('Expired')
+//         },
+//         onError(error) {
+//             console.log('Error happened:', error)
+//         },
+//     },
+// }
 </script>

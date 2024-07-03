@@ -1,6 +1,6 @@
-export default {
+{
     "welcome": "Welcome",
-    motto: "We create colorful and eye-catching websites",
+    "motto": "We create colorful and eye-catching websites",
     "sub_motto": "And bring you to success",
     "all_inclusive": "All inclusive",
     "activities": [
@@ -37,58 +37,58 @@ export default {
             "asset3": "High traffic"
         }
     ],
-    testimonials: {
-        0: {
-            title: "Hélène C.",
-            content: "Web toucan has successfully rebuilt our old website. Thanks to the contribution of the new technologies of the web, we now have a platform with a neat design, which corresponds perfectly to our willingness",
-            image_logo: "buchillonaucarre-logo.png",
-            image: "buchillonaucarre.jpg"
+    "testimonials2": {
+        "0": {
+            "title": "Hélène C.",
+            "content": "Web toucan has successfully rebuilt our old website. Thanks to the contribution of the new technologies of the web, we now have a platform with a neat design, which corresponds perfectly to our willingness",
+            "image_logo": "buchillonaucarre-logo.png",
+            "image": "buchillonaucarre.jpg"
         },
-        1: {
-            title: "Sabine P.",
-            content: "We asked Web Toucan to redesign our old website so that it can meet higher standards. The mission has been achieved successfully. We now know that we can rely on their skills and competences",
-            image_logo: "passionetcreations-logo.png",
-            image: "passionetcreations.jpg"
+        "1": {
+            "title": "Sabine P.",
+            "content": "We asked Web Toucan to redesign our old website so that it can meet higher standards. The mission has been achieved successfully. We now know that we can rely on their skills and competences",
+            "image_logo": "passionetcreations-logo.png",
+            "image": "passionetcreations.jpg"
         }
     },
-    testimonials2: [
+    "testimonials": [
         {
-            title: "Hélène C.",
-            content: "Web toucan has successfully rebuilt our old website. Thanks to the contribution of the new technologies of the web, we now have a platform with a neat design, which corresponds perfectly to our willingness",
-            image_logo: "buchillonaucarre-logo.png",
-            image: "buchillonaucarre.jpg"
+            "title": "Hélène C.",
+            "content": "Web toucan has successfully rebuilt our old website. Thanks to the contribution of the new technologies of the web, we now have a platform with a neat design, which corresponds perfectly to our willingness",
+            "image_logo": "buchillonaucarre-logo.png",
+            "image": "buchillonaucarre.jpg"
         },
         {
-            title: "Sabine P.",
-            content: "We asked Web Toucan to redesign our old website so that it can meet higher standards. The mission has been achieved successfully. We now know that we can rely on their skills and competences",
-            image_logo: "passionetcreations-logo.png",
-            image: "passionetcreations.jpg"
+            "title": "Sabine P.",
+            "content": "We asked Web Toucan to redesign our old website so that it can meet higher standards. The mission has been achieved successfully. We now know that we can rely on their skills and competences",
+            "image_logo": "passionetcreations-logo.png",
+            "image": "passionetcreations.jpg"
         }
     ],
     "company": {
         "title": "Company info",
         "content": "We Are a small team of designers, analyst and developers using innovative technics to build websites and help companies to improve digital performance."
     },
-    team_members: {
-        0: {
-            name: "Jean-Marc",
-            role: "Web developer",
-            content: "4 years experience with backend and frontend technologies (Laravel, VueJS, ReactJS, Node). Certified webmaster from HES-SO Valais and Amazon Cloud Architect.",
-            image: "jeanmarc.jpg"
+    "team_members": [
+        {
+            "name": "Jean-Marc",
+            "role": "Web developer",
+            "content": "4 years experience with backend and frontend technologies (Laravel, VueJS, ReactJS, Node). Certified webmaster from HES-SO Valais and Amazon Cloud Architect.",
+            "image": "jeanmarc.jpg"
         },
-        1: {
-            name: "Ivan",
-            role: "Data analyst",
-            content: "Econometrician with 5 years of experience as an analyst and research. Experience with Google Analytics, E-commerce, and online marketing.",
-            image: "ivan.jpg"
+        {
+            "name": "Ivan",
+            "role": "Data analyst",
+            "content": "Econometrician with 5 years of experience as an analyst and research. Experience with Google Analytics, E-commerce, and online marketing.",
+            "image": "ivan.jpg"
         },
-        2: {
-            name: "Mary",
-            role: "Graphic designer",
-            content: "Graphic designer focused on the development of illustration, packaging design, branding, corporate image and advertising starting from different approaches to get unique designs.",
-            image: "mary.jpg"
+        {
+            "name": "Mary",
+            "role": "Graphic designer",
+            "content": "Graphic designer focused on the development of illustration, packaging design, branding, corporate image and advertising starting from different approaches to get unique designs.",
+            "image": "mary.jpg"
         }
-    },
+    ],
     "contact": {
         "title": "Contact us",
         "content": "Use the form below to contact us"

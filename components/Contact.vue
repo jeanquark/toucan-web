@@ -12,23 +12,23 @@
             </v-card-text>
 
             <v-form ref="form" lazy-validation @submit.prevent="sendContactForm">
-
-                <v-text-field name="firstname" :label="`Firstname`" :counter="32" @update:focused="onFocus" :rules="[() => !!form.lastname || 'This field is required',
-                () => !!form.firstname && form.firstname.length <= 25 || 'Address must be less than 25 characters']"
-                    v-model="form.firstname">
+                <!-- <v-text-field label="Label" v-model="contact.firstname"></v-text-field> -->
+                <v-text-field name="firstname" :label="`Firstname`" :counter="32" @update:focused="onFocus" :rules="[() => !!contact.lastname || 'This field is required',
+                () => !!contact.firstname && contact.firstname.length <= 25 || 'Address must be less than 25 characters']"
+                    v-model="contact.firstname">
                 </v-text-field>
 
-                <v-text-field name="lastname" :label="`${$t('form.lastname')}`" :counter="32" :rules="[() => !!form.lastname || 'This field is required',
-                () => !!form.lastname && form.lastname.length <= 25 || 'Address must be less than 25 characters']"
-                    @update:focused="onFocus" v-model="form.lastname">
+                <v-text-field name="lastname" :label="`${$t('form.lastname')}`" :counter="32" :rules="[() => !!contact.lastname || 'This field is required',
+                () => !!contact.lastname && contact.lastname.length <= 25 || 'Address must be less than 25 characters']"
+                    @update:focused="onFocus" v-model="contact.lastname">
                 </v-text-field>
 
                 <v-text-field name="email" :label="`${$t('form.email')}`"
                     :rules="[(v) => !!v || `${$t('form.email')} ${$t('validation.is_required')}`, (v) => /.+@.+\..+/.test(v) || `${$t('form.email')} ${$t('validation.is_valid')}`]"
-                    @update:focused="onFocus" v-model="form.email"></v-text-field>
+                    @update:focused="onFocus" v-model="contact.email"></v-text-field>
 
                 <v-textarea name="message" rows="6" :label="`${$t('form.your_message')}`" :rules="[]" @focus="onFocus"
-                    v-model="form.message"></v-textarea>
+                    v-model="contact.message"></v-textarea>
                 <div class="my-2 text-center">
                     <!-- <recaptcha @error="onError" @success="onSuccess" @expired="onExpired" /> -->
                 </div>
@@ -59,12 +59,21 @@ const loading = ref(false)
 const messageInvalidCaptcha = ref(false)
 const messageSentSuccess = ref(false)
 const messageSentError = ref(false)
-let form = ref({
-    firstname: '',
-    lastname: '',
-    email: '',
-    message: ''
+let contact = ref({
+    firstname: "",
+    lastname: "",
+    email: "",
+    message: ""
 })
+// let form = ref({
+//     firstname: '',
+//     lastname: '',
+//     email: '',
+//     message: ''
+// })
+// let person = ref({
+//     surname: ''
+// })
 const valid = ref(true)
 
 // Methods

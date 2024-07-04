@@ -38,9 +38,12 @@
                     </template>
                     <v-list density="compact">
                         <v-list-item v-for="(locale, index) in availableLocales" :key="index" @click="switchLocale(locale)">
-                            <v-list-item-title>{{
-                                locale.name
-                            }}</v-list-item-title>
+                            <template v-slot:prepend>
+                                <v-img :src="`../images/languages/${locale.code}.png`" :width="30" class="mx-2"></v-img>
+                                <!-- <v-img :src="`../public/images/languages/fr.png`" :width="30" class="mx-2"></v-img> -->
+                                <!-- <img :src="`../images/languages/fr.png`" width="30" class="mx-2" /> -->
+                            </template>
+                            <v-list-item-title>{{ locale.code }}</v-list-item-title>
                         </v-list-item>
                     </v-list>
                 </v-menu>
@@ -52,8 +55,7 @@
         <v-footer :absolute="false" height="auto" color="primary">
             <v-row class="justify-center align-center my-0">
                 <v-col cols="12" class="py-3 text-center white--text">
-                    &copy;{{ new Date().getFullYear() }} — <strong>Toucan Web</strong><img
-                        src="/public/images/swiss_flag.png" width="10px" style="vertical-align: top" />
+                    &copy;{{ new Date().getFullYear() }} — <strong>Toucan Web</strong><img src="/public/images/swiss_flag.png" width="10px" style="vertical-align: top" />
                 </v-col>
             </v-row>
         </v-footer>
@@ -64,36 +66,36 @@
 <script setup lang="ts">
 // import { useTheme } from 'vuetify'
 
-const router = useRouter();
+const router = useRouter()
 // const theme = useTheme()
-const { t, locale } = useI18n();
-const switchLocalePath = useSwitchLocalePath();
+const { t, locale, locales } = useI18n()
+const switchLocalePath = useSwitchLocalePath()
+
+definePageMeta({
+});
 
 const fixed = ref(false)
 
 // computed proprties
 const activeLocale: any = computed((): any => {
     // return this.$i18n.locale
-    return locale.value;
-    return "en";
-});
+    return locale.value
+    return 'en'
+})
 const availableLocales = computed((): any => {
-    // const array = locales.value as Array<any>;
-    // return array.filter((i) => i.code !== locale.value);
-
-    // return t.locales.filter((i) => i.code !== t.locale)
-    return []
+    const array = locales.value as Array<any>
+    return array.filter((i) => i.code !== locale.value)
 })
 
 // methods
 const switchLocale = (locale: any) => {
-    console.log("switchLocale: ", locale);
-    router.push({ path: switchLocalePath(locale.code) });
-};
+    console.log('switchLocale: ', locale)
+    router.push({ path: switchLocalePath(locale.code) })
+}
 </script>
 
 <style>
-[v-cloak]>* {
+[v-cloak] > * {
     display: none;
 }
 

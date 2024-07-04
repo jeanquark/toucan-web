@@ -10,22 +10,23 @@
                                 :class="`elevation-${isHovering ? 10 : 0}`" height="400">
                                 <v-card-title primary-title class="justify-center">
                                     <div class="text-center" color="">
-                                        <h3 class="headline mb-0">{{ $t(`packages[${i - 1}].title`) }}</h3>
+                                        <h2 class="text-white mb-0">{{ $t(`packages[${i - 1}].title`) }}</h2>
                                     </div>
                                 </v-card-title>
                                 <v-card-text class="" style="padding: 30px">
                                     <v-list subheader style="border: 1px dashed orange">
                                         <v-list-item v-for="j in 3" :key="j">
                                             <template v-slot:prepend>
-                                                <v-icon :icon="icons[i - 1][j - 1]" />
+                                                <v-icon :icon="icons[i - 1][j - 1]" size="x-large" />
                                             </template>
                                             <v-list-item-title style="white-space: normal;">
                                                 <slot>
-                                                    {{ $t(`packages[${i - 1}].asset${j}`) }}
+                                                    <p class="text-center">
+                                                    {{ $t(`packages[${i - 1}].asset${j}`) }}</p>
                                                 </slot>
                                             </v-list-item-title>
                                             <template v-slot:append>
-                                                <v-icon :icon="'mdi-check-circle-outline'" color="green" />
+                                                <v-icon :icon="'mdi-check-circle'" color="green" size="x-large" />
                                             </template>
                                         </v-list-item>
                                         <!-- <v-list-item>
@@ -47,12 +48,12 @@
                                         <div class="flip-card">
                                             <div class="flip-card-inner">
                                                 <div class="flip-card-front">
-                                                    <v-chip label color="pink" text-color="white"> <v-icon left
+                                                    <v-chip label variant="flat" color="pink" text-color="white"> <v-icon left
                                                             icon="mdi-label" />CHF {{ prices[i - 1] }} </v-chip>
                                                 </div>
                                                 <div class="flip-card-back">
-                                                    <v-chip label color="orange" text-color="white"> {{
-                                                        $t('all_inclusive') }}<v-icon right icon="mdi-done" /></v-chip>
+                                                    <v-chip label variant="flat" color="violet" text-color="white"> {{
+                                                    $t('all_inclusive') }}<v-icon icon="mdi-check" end></v-icon></v-chip>
                                                 </div>
                                             </div>
                                         </div>

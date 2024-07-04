@@ -4,14 +4,14 @@
         <v-col cols="12" md="10" lg="8" class="my-3">
             <ClientOnly>
             <v-card>
-                <v-tabs bg-color="primary" v-model="tab">
-                    <v-tab value="one">
-                        {{ $t('testimonials.0.title') }}
+                <v-tabs bg-color="primary" align-tabs="center" stacked height="100" slider-color="white" v-model="tab">
+                    <v-tab value="one" class="text-white">
                         <img :src="`images/testimonials/buchillonaucarre-logo.png`" width="40" style="padding: 10px 0px;" />
+                        {{ $t('testimonials.0.title') }}
                     </v-tab>
-                    <v-tab value="two">
-                        {{ $t('testimonials.1.title') }}
+                    <v-tab value="two" class="text-white">
                         <img :src="`images/testimonials/passionetcreations-logo.png`" width="40" style="padding: 10px 0px;" />
+                        {{ $t('testimonials.1.title') }}
                     </v-tab>
                 </v-tabs>
 

@@ -15,7 +15,7 @@
                     <v-expansion-panel-title>
                         <v-row no-gutters class="align-center">
                             <v-col cols="3">
-                                <v-avatar :size="100" color="blue lighten-2">
+                                <v-avatar :size="100" color="blue-grey-lighten-4">
                                     <v-img alt="Avatar" :src="`images/teams/jeanmarc.jpg`"></v-img>
                                 </v-avatar>
                             </v-col>
@@ -37,7 +37,7 @@
                     <v-expansion-panel-title>
                         <v-row no-gutters class="align-center">
                             <v-col cols="3">
-                                <v-avatar :size="100" color="blue lighten-2">
+                                <v-avatar :size="100" color="blue-grey-lighten-4">
                                     <v-img alt="Avatar" :src="`images/teams/ivan.jpg`"></v-img>
                                 </v-avatar>
                             </v-col>
@@ -59,7 +59,7 @@
                     <v-expansion-panel-title>
                         <v-row no-gutters class="align-center">
                             <v-col cols="3">
-                                <v-avatar :size="100" color="blue lighten-2">
+                                <v-avatar :size="100" color="blue-grey-lighten-4">
                                     <v-img alt="Avatar" :src="`images/teams/mary.jpg`"></v-img>
                                 </v-avatar>
                             </v-col>

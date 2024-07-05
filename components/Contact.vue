@@ -34,8 +34,9 @@
                 </div>
                 <!-- <div class="text-center" v-if="!messageSentSuccess && !messageSentError"> -->
                 <div class="my-2 text-center">
-                    <v-btn type="submit" color="secondary" :disabled="!valid" :loading="loading" class="" style=""><span class="text-white">{{ $t('form.submit')
-                    }}</span></v-btn>
+                    <v-btn type="submit" color="secondary" :disabled="!valid" :loading="loading" class="" style=""><span
+                            class="text-white">{{ $t('form.submit')
+                            }}</span></v-btn>
                 </div>
             </v-form>
 
@@ -59,7 +60,7 @@ const messageInvalidCaptcha = ref(false)
 const messageSentSuccess = ref(false)
 const messageSentError = ref(false)
 const contactFormRef = ref(null)
-const contactForm = ref({
+let contactForm = ref({
     firstname: "",
     lastname: "",
     email: "",
@@ -88,6 +89,77 @@ const encodeHTML = (s: string) => {
 }
 
 const sendContactForm = async () => {
+    console.log('sendContactForm');
+    // for (let i = 0; i < notifications.length; i++) {
+    //     notifications[i].classList.add("hidden");
+    // }
+    console.log('contactForm: ', contactForm);
+    console.log('contactForm.value: ', contactForm.value);
+
+    const formData = new FormData();
+    formData.append("firstname", contactForm.value.firstname)
+    formData.append("lastname", contactForm.value.firstname)
+    formData.append("email", contactForm.value.firstname)
+    formData.append("message", contactForm.value.firstname)
+    console.log('formData: ', formData);
+
+    const firstname = formData.get("firstname")
+    console.log('firstname: ', firstname);
+    // return
+
+    // const sendMessageButton = document.getElementById("sendMessageButton")
+    // sendMessageButton.setAttribute('disabled', '');
+
+    try {
+        // const reCaptchaValue = grecaptcha.getResponse()
+        // console.log('reCaptchaValue: ', reCaptchaValue);
+        // if (reCaptchaValue.length < 1) {
+        //     document.querySelector(".message.warning").classList.remove("hidden");
+        //     return
+        // }
+
+        // fetch("https://formspree.io/f/xrgnejnw", {
+        //     method: "POST",
+        //     body: formData,
+        //     headers: {
+        //         'Accept': 'application/json'
+        //     }
+        // }).then(response => {
+        //     if (response.ok) {
+        //         console.log("success")
+        //     } else {
+        //         throw 'send_error'
+        //     }
+        // })
+        // return
+
+        const response = await fetch("https://formspree.io/f/xrgnejnw", {
+            method: "POST",
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
+        await new Promise(resolve => setTimeout(resolve, 2000));
+        console.log('response: ', response);
+        if (response.ok) {
+            // document.querySelector(".message.success").classList.remove("hidden");
+            contactForm.value.reset();
+        } else {
+            throw 'send_error'
+        }
+
+    } catch (e) {
+        console.error(e);
+        // document.querySelector(".message.error").classList.remove("hidden");
+
+    } finally {
+        // sendMessageButton.removeAttribute('disabled');
+    }
+}
+
+
+const sendContactForm2 = async () => {
     try {
         // const token = await this.$recaptcha.getResponse()
         // console.log('ReCaptcha token:', token)

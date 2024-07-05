@@ -14,6 +14,8 @@ export default defineNuxtConfig({
 			viewport: 'width=device-width, initial-scale=1',
 			title: 'Toucan Web',
 			description: 'A company that provides web services',
+			referrer: 'content=origin',
+
 			link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
 		}
 	},

@@ -1,8 +1,9 @@
 <template>
     <v-app id="app" v-cloak style="">
-        <v-toolbar color="white">
+        <!-- Lora,sans-serif -->
+        <v-toolbar color="white" class="py-1" style="border: 2px solid red;">
             <v-toolbar-title>
-                <img src="/public/images/logo_small.png" alt="Web Toucan logo" width="150" />
+                <img src="../public/images/logo_small.png" alt="Web Toucan logo" width="150" />
             </v-toolbar-title>
             <v-spacer></v-spacer>
             <v-toolbar-items class="text-center">
@@ -54,7 +55,7 @@
 
         <v-footer :absolute="false" height="auto" color="primary">
             <v-row class="justify-center align-center my-0">
-                <v-col cols="12" class="py-3 text-center white--text">
+                <v-col cols="12" class="py-3 text-center text-white">
                     &copy;{{ new Date().getFullYear() }} — <strong>Toucan Web</strong><img src="/public/images/swiss_flag.png" width="10px" style="vertical-align: top" />
                 </v-col>
             </v-row>
@@ -112,6 +113,9 @@ const switchLocale = (locale: any) => {
 </style>
 
 <style scoped>
+/* .v-application {
+    font-family: "Lora,sans-serif"!important;
+} */
 .primary-color {
     background: var(--v-primary-base);
 }

@@ -1,17 +1,17 @@
 <template>
     <v-row class="justify-center my-5">
         <!-- {{ testimonials[0]['title'] }} -->
-        <v-col cols="12" md="10" lg="8" class="my-3">
+        <v-col cols="12" md="10" lg="10" class="my-3">
             <ClientOnly>
             <v-card>
                 <v-tabs bg-color="primary" align-tabs="center" stacked height="100" slider-color="white" v-model="tab">
-                    <v-tab value="one" class="text-white">
+                    <v-tab value="one">
                         <img :src="`images/testimonials/buchillonaucarre-logo.png`" width="40" style="padding: 10px 0px;" />
-                        {{ $t('testimonials.0.title') }}
+                        <p class="text-white">{{ $t('testimonials.0.title') }}</p>
                     </v-tab>
-                    <v-tab value="two" class="text-white">
+                    <v-tab value="two">
                         <img :src="`images/testimonials/passionetcreations-logo.png`" width="40" style="padding: 10px 0px;" />
-                        {{ $t('testimonials.1.title') }}
+                        <p class="text-white">{{ $t('testimonials.1.title') }}</p>
                     </v-tab>
                 </v-tabs>
 
@@ -86,7 +86,7 @@ const tab = ref(null)
 onMounted(() => {
     try {
         // console.log(t('company.title'))
-        console.log(t('testimonials2.0.title'))
+        // console.log(t('testimonials2.0.title'))
         // console.log(t('testimonials'[0]))
     } catch (error) {
         console.log('error: ', error);

@@ -6,15 +6,15 @@ export default {
     "activities": [
         {
             "title": "Sites web & Shop en ligne",
-            "content": "Nous utilisons les dernières technologies du web pour concevoir une plateforme innovante correspondant parfaitement à vos besoins"
+            "content": "Nous utilisons les dernières technologies du web pour concevoir une plateforme innovante correspondant parfaitement à vos besoins."
         },
         {
             "title": "Un design soigné",
-            "content": "Nous soignons l'aspect visuel de votre site afin qu'il corresponde parfaitement à vos besoins et adoptons les techniques de design récentes"
+            "content": "Nous soignons l'aspect visuel de votre site afin qu'il corresponde parfaitement à vos besoins et adoptons les techniques de design récentes."
         },
         {
             "title": "Analyse",
-            "content": "Nous fournissons des indicateurs précis sur votre pésence en ligne et cherchons constamment des moyens d'augmenter votre base de clients"
+            "content": "Nous fournissons des indicateurs précis sur votre pésence en ligne et cherchons constamment des moyens d'augmenter votre base de clients."
         }
     ],
     "packages": [

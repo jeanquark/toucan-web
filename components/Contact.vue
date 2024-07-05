@@ -1,26 +1,26 @@
 <template>
-    <v-col cols="12" md="10" lg="4">
+    <v-col cols="12" md="10" lg="6">
         <v-card flat class="" style="padding: 0px 40px">
             <v-card-title primary-title class="layout justify-center">
-                <div class="headline">
+                <div class="text-h5 text-center">
                     {{ $t('contact.title') }}
                 </div>
             </v-card-title>
-            <v-card-text class="">
+            <v-card-text class="text-body-1">
                 {{ $t('contact.content') }}
                 <br /><br />
             </v-card-text>
 
             <v-form ref="form" lazy-validation @submit.prevent="sendContactForm">
                 <!-- <v-text-field label="Label" v-model="contact.firstname"></v-text-field> -->
-                <v-text-field name="firstname" :label="`Firstname`" :counter="32" @update:focused="onFocus" :rules="[() => !!contact.lastname || 'This field is required',
-                () => !!contact.firstname && contact.firstname.length <= 25 || 'Address must be less than 25 characters']"
-                    v-model="contact.firstname">
+                <v-text-field name="firstname" :label="`Firstname`" :counter="32" @update:focused="onFocus"
+                    :rules="[() => !!contact.lastname || 'This field is required',
+                    () => !!contact.firstname && contact.firstname.length <= 25 || 'Address must be less than 25 characters']" v-model="contact.firstname">
                 </v-text-field>
 
-                <v-text-field name="lastname" :label="`${$t('form.lastname')}`" :counter="32" :rules="[() => !!contact.lastname || 'This field is required',
-                () => !!contact.lastname && contact.lastname.length <= 25 || 'Address must be less than 25 characters']"
-                    @update:focused="onFocus" v-model="contact.lastname">
+                <v-text-field name="lastname" :label="`${$t('form.lastname')}`" :counter="32"
+                    :rules="[() => !!contact.lastname || 'This field is required',
+                    () => !!contact.lastname && contact.lastname.length <= 25 || 'Address must be less than 25 characters']" @update:focused="onFocus" v-model="contact.lastname">
                 </v-text-field>
 
                 <v-text-field name="email" :label="`${$t('form.email')}`"
@@ -34,7 +34,7 @@
                 </div>
                 <!-- <div class="text-center" v-if="!messageSentSuccess && !messageSentError"> -->
                 <div class="my-2 text-center">
-                    <v-btn color="secondary" type="submit" :disabled="!valid" :loading="loading">{{ $t('form.submit')
+                    <v-btn color="secondary" type="submit" :disabled="!valid" :loading="loading" class="text-white">{{ $t('form.submit')
                     }}</v-btn>
                 </div>
             </v-form>

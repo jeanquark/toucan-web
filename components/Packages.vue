@@ -1,16 +1,17 @@
 <template>
     <!-- <section> -->
     <v-row no-gutters class="justify-center my-5">
-        <v-col cols="12" md="8" class="my-3">
-            <v-row no-gutters wrap>
+        <v-col cols="12" sm="10" class="my-3">
+            <v-row no-gutters class="border-md">
                 <v-col cols="12" md="4" v-for="i in 3" :key="i">
                     <v-hover>
                         <template v-slot:default="{ isHovering, props }">
-                            <v-card flat class="white--text" :color="colors[i - 1]" slot-scope="{ hover }"
-                                :class="`elevation-${isHovering ? 10 : 0}`" height="400">
+                            <v-card flat class="text-white px-2" :color="colors[i - 1]" v-bind="props"
+                                :class="`mx-2 elevation-${isHovering ? 10 : 0}`" height="400">
                                 <v-card-title primary-title class="justify-center">
-                                    <div class="text-center" color="">
-                                        <h2 class="text-white mb-0">{{ $t(`packages[${i - 1}].title`) }}</h2>
+                                    <div class="text-center">
+                                        <h2 class="text-h4 text-white mt-2 mb-0">{{ $t(`packages[${i - 1}].title`) }}</h2>
+                                        <!-- {{ isHovering }} -->
                                     </div>
                                 </v-card-title>
                                 <v-card-text class="" style="padding: 30px">
@@ -22,7 +23,7 @@
                                             <v-list-item-title style="white-space: normal;">
                                                 <slot>
                                                     <p class="text-center">
-                                                    {{ $t(`packages[${i - 1}].asset${j}`) }}</p>
+                                                        {{ $t(`packages[${i - 1}].asset${j}`) }}</p>
                                                 </slot>
                                             </v-list-item-title>
                                             <template v-slot:append>
@@ -48,12 +49,16 @@
                                         <div class="flip-card">
                                             <div class="flip-card-inner">
                                                 <div class="flip-card-front">
-                                                    <v-chip label variant="flat" color="pink" text-color="white"> <v-icon left
-                                                            icon="mdi-label" />CHF {{ prices[i - 1] }} </v-chip>
+                                                    <v-chip label variant="flat" color="pink" class=""><v-icon left
+                                                            icon="mdi-label" color="white" class="mr-1" />
+                                                        <span class="text-white">CHF {{ prices[i - 1] }}</span>
+                                                    </v-chip>
                                                 </div>
                                                 <div class="flip-card-back">
-                                                    <v-chip label variant="flat" color="violet" text-color="white"> {{
-                                                    $t('all_inclusive') }}<v-icon icon="mdi-check" end></v-icon></v-chip>
+                                                    <v-chip label variant="flat" color="#FFB300" class="text-white">
+                                                        <span class="text-white">{{
+                                                            $t('all_inclusive') }}</span><v-icon icon="mdi-check"
+                                                            color="green" end></v-icon></v-chip>
                                                 </div>
                                             </div>
                                         </div>

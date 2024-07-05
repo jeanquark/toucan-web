@@ -6,15 +6,15 @@ export default {
     "activities": [
         {
             "title": "Websites & E-commerce",
-            "content": "We use the newest technology and innovative designs to build personalized websites according to your needs. At very affordable prices, we will work with you to create attractive websites that engage visitors"
+            "content": "We use the newest technology and innovative designs to build personalized websites according to your needs. At very affordable prices, we will work with you to create attractive websites that engage visitors."
         },
         {
             "title": "Beautiful Design",
-            "content": "We tailor the design of your website to your needs and make it look modern and sleek. We will help you to create a logo, branding guidelines, a design for desktop or tablet"
+            "content": "We tailor the design of your website to your needs and make it look modern and sleek. We will help you to create a logo, branding guidelines, a design for desktop or tablet."
         },
         {
             "title": "Analytics",
-            "content": "Whether you are a doctor, a lawyer, a small or large company, we will help you to learn how users engage with your products, experiences, and campaigns so you can increase traffic and sales"
+            "content": "Whether you are a doctor, a lawyer, a small or large company, we will help you to learn how users engage with your products, experiences, and campaigns so you can increase traffic and sales."
         }
     ],
     "packages": [

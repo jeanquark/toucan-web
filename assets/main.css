@@ -1,0 +1,17 @@
+/* @font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url('./fonts/Roboto/Roboto-Light.ttf') format('truetype');
+} */
+
+@font-face {
+    font-family: 'Lora';
+    src: url('./fonts/Lora/static/Lora-Regular.ttf') format('truetype');
+}
+* {
+    font-family: 'Lora sans-serif' !important;
+    line-height: 1.5;
+    color: #37474F;
+}

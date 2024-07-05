@@ -1,8 +1,8 @@
 <template>
     <!-- <section> -->
     <!-- Large screens -->
-    <v-row no-gutters justify="center" class="hidden-sm-and-down">
-        <v-col cols="12" sm="10" class="my-3">
+    <v-row no-gutters class="justify-center hidden-sm-and-down">
+        <v-col cols="12" sm="10" class="border-md my-3">
             <!-- <v-container grid-list-xl> -->
             <v-card flat class="transparent">
                 <v-row no-gutters>
@@ -29,12 +29,12 @@
                     </v-col>
                 </v-row>
                 <v-row no-gutters>
-                    <v-col cols="12" md="4" class="text-h5 text-center my-4" v-for="index in 3" :key="index">
+                    <v-col cols="12" md="4" class="text-h5 text-center my-4" style="" v-for="index in 3" :key="index">
                             {{ $t(`activities[${index - 1}].title`) }}
                     </v-col>
                 </v-row>
                 <v-row no-gutters>
-                    <v-col cols="12" md="4" class="text-subtitle-1 my-2" v-for="index in 3" :key="index">
+                    <v-col cols="12" md="4" class="text-body-1 my-2 px-4" v-for="index in 3" :key="index">
                         {{ $t(`activities[${index - 1}].content`) }}
                     </v-col>
                 </v-row>

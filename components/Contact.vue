@@ -34,8 +34,8 @@
                 </div>
                 <!-- <div class="text-center" v-if="!messageSentSuccess && !messageSentError"> -->
                 <div class="my-2 text-center">
-                    <v-btn color="secondary" type="submit" :disabled="!valid" :loading="loading" class="text-white">{{ $t('form.submit')
-                    }}</v-btn>
+                    <v-btn type="submit" color="secondary" :disabled="!valid" :loading="loading" class="" style=""><span class="text-white">{{ $t('form.submit')
+                    }}</span></v-btn>
                 </div>
             </v-form>
 

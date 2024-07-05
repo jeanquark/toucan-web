@@ -1,7 +1,7 @@
 <template>
     <v-app id="app" v-cloak style="">
         <!-- Lora,sans-serif -->
-        <v-toolbar color="white" class="py-1" style="border: 2px solid red;">
+        <v-toolbar color="white" class="py-1" style="border: 2px solid green;">
             <v-toolbar-title>
                 <img src="../public/images/logo_small.png" alt="Web Toucan logo" width="150" />
             </v-toolbar-title>
@@ -33,18 +33,18 @@
                     <template v-slot:activator="{ props }">
                         <v-btn flat color="primary" class="text-capitalize" v-bind="props">
                             <v-icon left>mdi-translate</v-icon>
-                            {{ activeLocale }}
+                            <span class="text-body-1 text-uppercase">{{ activeLocale }}</span>
                             <v-icon small right>mdi-menu-down</v-icon>
                         </v-btn>
                     </template>
                     <v-list density="compact">
                         <v-list-item v-for="(locale, index) in availableLocales" :key="index" @click="switchLocale(locale)">
                             <template v-slot:prepend>
-                                <v-img :src="`../images/languages/${locale.code}.png`" :width="30" class="mx-2"></v-img>
+                                <v-img :src="`images/languages/${locale.code}.png`" :width="30" class="mx-2"></v-img>
                                 <!-- <v-img :src="`../public/images/languages/fr.png`" :width="30" class="mx-2"></v-img> -->
                                 <!-- <img :src="`../images/languages/fr.png`" width="30" class="mx-2" /> -->
                             </template>
-                            <v-list-item-title>{{ locale.code }}</v-list-item-title>
+                            <v-list-item-title class="text-body-1 text-uppercase">{{ locale.code }}</v-list-item-title>
                         </v-list-item>
                     </v-list>
                 </v-menu>
@@ -72,8 +72,8 @@ const router = useRouter()
 const { t, locale, locales } = useI18n()
 const switchLocalePath = useSwitchLocalePath()
 
-definePageMeta({
-});
+// definePageMeta({
+// });
 
 const fixed = ref(false)
 

@@ -2,7 +2,7 @@
     <!-- <section> -->
     <v-row no-gutters class="justify-center my-5">
         <v-col cols="12" sm="10" class="my-3">
-            <v-row no-gutters class="border-md">
+            <v-row no-gutters class="">
                 <v-col cols="12" md="4" v-for="i in 3" :key="i">
                     <v-hover>
                         <template v-slot:default="{ isHovering, props }">
@@ -82,7 +82,7 @@ const colors = ref(['#8ac5ff', '#64B5F6', '#1976d2'])
 // const iconsThirdLine = ref(['mdi-magnify', 'mdi-functions', 'mdi-swap-horizontal'])
 const icons = ref([
     ['mdi-application-settings-outline', 'mdi-email', 'mdi-magnify'],
-    ['mdi-application-settings-outline', 'mdi-application-settings-outline', 'mdi-function'],
+    ['mdi-application-settings-outline', 'mdi-account-cog', 'mdi-function'],
     ['mdi-application-settings-outline', 'mdi-code-tags', 'mdi-swap-horizontal']
 ])
 // export default {

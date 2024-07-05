@@ -2,7 +2,7 @@
     <!-- <section> -->
     <!-- Large screens -->
     <v-row no-gutters class="justify-center hidden-sm-and-down">
-        <v-col cols="12" sm="10" class="border-md my-3">
+        <v-col cols="12" sm="10" class="my-3">
             <!-- <v-container grid-list-xl> -->
             <v-card flat class="transparent">
                 <v-row no-gutters>

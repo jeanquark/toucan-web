@@ -11,24 +11,24 @@
                 <br /><br />
             </v-card-text>
 
-            <v-form ref="form" lazy-validation @submit.prevent="sendContactForm">
+            <v-form ref="contactFormRef" lazy-validation @submit.prevent="sendContactForm">
                 <!-- <v-text-field label="Label" v-model="contact.firstname"></v-text-field> -->
-                <v-text-field name="firstname" :label="`Firstname`" :counter="32" @update:focused="onFocus"
-                    :rules="[() => !!contact.lastname || 'This field is required',
-                    () => !!contact.firstname && contact.firstname.length <= 25 || 'Address must be less than 25 characters']" v-model="contact.firstname">
+                <v-text-field name="firstname" :label="`Firstname`" :counter="30" @update:focused="onFocus"
+                    :rules="[() => !!contactForm.firstname || 'This field is required',
+                    () => !!contactForm.firstname && contactForm.firstname.length <= 30 || 'Firstname must be less than 30 characters']" v-model="contactForm.firstname">
                 </v-text-field>
 
                 <v-text-field name="lastname" :label="`${$t('form.lastname')}`" :counter="32"
-                    :rules="[() => !!contact.lastname || 'This field is required',
-                    () => !!contact.lastname && contact.lastname.length <= 25 || 'Address must be less than 25 characters']" @update:focused="onFocus" v-model="contact.lastname">
+                    :rules="[() => !!contactForm.lastname || 'This field is required',
+                    () => !!contactForm.lastname && contactForm.lastname.length <= 30 || 'Lastname must be less than 25 characters']" @update:focused="onFocus" v-model="contactForm.lastname">
                 </v-text-field>
 
                 <v-text-field name="email" :label="`${$t('form.email')}`"
                     :rules="[(v) => !!v || `${$t('form.email')} ${$t('validation.is_required')}`, (v) => /.+@.+\..+/.test(v) || `${$t('form.email')} ${$t('validation.is_valid')}`]"
-                    @update:focused="onFocus" v-model="contact.email"></v-text-field>
+                    @update:focused="onFocus" v-model="contactForm.email"></v-text-field>
 
                 <v-textarea name="message" rows="6" :label="`${$t('form.your_message')}`" :rules="[]" @focus="onFocus"
-                    v-model="contact.message"></v-textarea>
+                    v-model="contactForm.message"></v-textarea>
                 <div class="my-2 text-center">
                     <!-- <recaptcha @error="onError" @success="onSuccess" @expired="onExpired" /> -->
                 </div>
@@ -39,15 +39,14 @@
                 </div>
             </v-form>
 
-            <v-alert type="warning" v-if="messageInvalidCaptcha">
+            <v-alert type="warning" closable v-if="messageInvalidCaptcha">
                 {{ $t('form.message_invalid_recaptcha') }}
             </v-alert>
-            <v-alert type="success" v-if="messageSentSuccess">
+            <v-alert type="success" closable v-if="messageSentSuccess">
                 {{ $t('form.message_success') }}
             </v-alert>
-            <v-alert type="error" prominent v-if="messageSentError">
-                {{ $t('form.message_error') }}
-            </v-alert>
+            <v-alert type="error" closable v-if="messageSentError">{{ $t('form.message_error') }}</v-alert>
+
         </v-card>
     </v-col>
 </template>
@@ -59,7 +58,8 @@ const loading = ref(false)
 const messageInvalidCaptcha = ref(false)
 const messageSentSuccess = ref(false)
 const messageSentError = ref(false)
-let contact = ref({
+const contactFormRef = ref(null)
+const contactForm = ref({
     firstname: "",
     lastname: "",
     email: "",
@@ -92,8 +92,10 @@ const sendContactForm = async () => {
         // const token = await this.$recaptcha.getResponse()
         // console.log('ReCaptcha token:', token)
         console.log('sendContactForm')
-        const valid = form.value.validate()
+        // const { valid } = contact.value.validate()
+        const { valid } = await contactFormRef.value?.validate()
         console.log('valid: ', valid)
+        // return
         if (valid) {
             loading.value = true
             const res = await fetch('https://script.google.com/macros/s/AKfycbyUbXcwQHeGAjSrDHbIx84PcM1FCEs-S3SnwZjHKQ/exec', {
@@ -102,16 +104,16 @@ const sendContactForm = async () => {
                     'Content-Type': 'application/x-www-form-urlencoded',
                 },
                 body: new URLSearchParams({
-                    firstname: `${encodeHTML(form.value.firstname)}`,
-                    lastname: `${encodeHTML(form.value.lastname)}`,
-                    email: `${encodeHTML(form.value.email)}`,
-                    message: `${encodeHTML(form.value.message)}`,
+                    firstname: `${encodeHTML(contactForm.value.firstname)}`,
+                    lastname: `${encodeHTML(contactForm.value.lastname)}`,
+                    email: `${encodeHTML(contactForm.value.email)}`,
+                    message: `${encodeHTML(contactForm.value.message)}`,
                 }),
             })
             // await this.$recaptcha.reset()
 
             if (res.status === 200) {
-                form.value.reset()
+                contactFormRef.value.reset()
                 messageInvalidCaptcha.value = false
                 messageSentError.value = false
                 messageSentSuccess.value = true

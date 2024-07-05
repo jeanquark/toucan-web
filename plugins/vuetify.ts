@@ -12,7 +12,7 @@ const lightTheme: ThemeDefinition = {
         secondary: colors.amber.darken1, //#FFB300
         info: colors.teal.lighten1,
         warning: colors.amber.base,
-        error: colors.deepOrange.accent4,
+        error: colors.red.accent2,
         success: colors.green.accent3,
     },
 };
@@ -25,7 +25,7 @@ const darkTheme: ThemeDefinition = {
         secondary: colors.amber.darken3,
         info: colors.teal.lighten1,
         warning: colors.amber.base,
-        error: colors.deepOrange.accent4,
+        error: colors.red.accent2,
         success: colors.green.accent3,
     },
 };

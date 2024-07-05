@@ -23,7 +23,7 @@
     <testimonials />
     <v-row no-gutters class="justify-center mb-2">
         <v-col cols="12" sm="10">
-            <v-row no-gutters class="justify-center border-xl">
+            <v-row no-gutters class="justify-center">
                 <team />
                 <contact />
             </v-row>

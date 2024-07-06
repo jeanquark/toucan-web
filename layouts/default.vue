@@ -1,6 +1,6 @@
 <template>
     <v-app id="app" style="">
-        <v-toolbar color="white" v-cloak class="py-1" style="border: 4px solid darkslategray;">
+        <v-toolbar color="white" v-cloak class="py-1" style="border: 4px solid darkred;">
             <v-toolbar-title>
                 <v-img src="../public/images/logo_small.png" alt="Toucan Web logo" width="150" />
             </v-toolbar-title>

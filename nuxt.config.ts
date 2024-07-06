@@ -1,11 +1,6 @@
 import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 
 export default defineNuxtConfig({
-	// generate:{
-	// 	nojekyll: true, //not working on this version
-	//   },
-	// ssr: true,
-	// target: "static",
 	app: {
 		baseURL: '/toucan-web/', // baseURL: '/<repository>/'
 		buildAssetsDir: 'assets', // don't use "_" at the begining of the folder name to avoids nojkill conflict
@@ -69,6 +64,7 @@ export default defineNuxtConfig({
 			strictMessage: false,
 		},
 	},
+	experimental: { inlineSSRStyles: false },
 	vite: {
 		vue: {
 			template: {

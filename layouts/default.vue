@@ -1,34 +1,13 @@
 <template>
-    <v-app id="app" v-cloak style="">
+    <v-app id="app" style="">
         <!-- Lora,sans-serif -->
-        <v-toolbar color="white" class="py-1" style="border: 4px solid pink;">
+        <v-toolbar color="white" v-cloak class="py-1" style="border: 4px solid lightgreen;">
             <v-toolbar-title>
-                <img src="../public/images/logo_small.png" alt="Web Toucan logo" width="150" />
+                <!-- <img src="../public/images/logo_small.png" alt="Web Toucan logo" width="150" /> -->
+                <!-- <v-img src="../public/images/logo_small.png" alt="Toucan Web logo" width="150" /> -->
             </v-toolbar-title>
             <v-spacer></v-spacer>
             <v-toolbar-items class="text-center">
-                <!-- <v-menu open-on-hover top offset-y class="text-center">
-                    <template v-slot:activator="{ on, attrs }">
-                        <v-btn text dark v-bind="attrs" v-on="on">
-                            <img :src="`/public/images/languages/en.png`" width="40" />
-                        </v-btn>
-                    </template>
-
-                    <v-hover>
-                        <template v-slot:default="{ isHovering, props }">
-                            <v-list class="text-center">
-                                <v-list-item v-for="(locale, index) in availableLocales" :key="index" style=""
-                                    :class="`${isHovering ? 'primary-color' : ''}`">
-                                    <nuxt-link :to="'en'" style="margin: 0 auto">
-                                        <v-list-item-title style="align-items: center">
-                                            <img :src="`/public/images/languages/${locale.code}.png`" width="30" style="" />
-                                        </v-list-item-title>
-                                    </nuxt-link>
-                                </v-list-item>
-                            </v-list>
-                        </template>
-                    </v-hover>
-                </v-menu> -->
                 <v-menu>
                     <template v-slot:activator="{ props }">
                         <v-btn flat color="primary" class="text-capitalize" v-bind="props">

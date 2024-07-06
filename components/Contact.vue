@@ -107,7 +107,7 @@ const encodeHTML = (s: string) => {
 
 }
 
-const sendContactForm = async (e: any) => {
+const sendContactForm3 = async (e: any) => {
     try {
         const data = new FormData(e.target);
         console.log('data: ', data);
@@ -121,7 +121,9 @@ const sendContactForm = async (e: any) => {
     }
 }
 
-const sendContactForm3 = async () => {
+const sendContactForm = async () => {
+    try {
+
     console.log('sendContactForm');
     // for (let i = 0; i < notifications.length; i++) {
     //     notifications[i].classList.add("hidden");
@@ -143,7 +145,6 @@ const sendContactForm3 = async () => {
     // const sendMessageButton = document.getElementById("sendMessageButton")
     // sendMessageButton.setAttribute('disabled', '');
 
-    try {
         // const reCaptchaValue = grecaptcha.getResponse()
         // console.log('reCaptchaValue: ', reCaptchaValue);
         // if (reCaptchaValue.length < 1) {
@@ -190,6 +191,7 @@ const sendContactForm3 = async () => {
         if (response.ok) {
             // document.querySelector(".message.success").classList.remove("hidden");
             contactForm.value.reset();
+            messageSentSuccess.value = true
         } else {
             throw 'send_error'
         }
@@ -197,7 +199,7 @@ const sendContactForm3 = async () => {
     } catch (e) {
         console.error(e);
         // document.querySelector(".message.error").classList.remove("hidden");
-
+        messageSentError.value = true
     } finally {
         // sendMessageButton.removeAttribute('disabled');
     }

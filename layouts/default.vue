@@ -1,7 +1,7 @@
 <template>
     <v-app id="app" v-cloak style="">
         <!-- Lora,sans-serif -->
-        <v-toolbar color="white" class="py-1" style="border: 2px solid orange;">
+        <v-toolbar color="white" class="py-1" style="border: 4px solid purple;">
             <v-toolbar-title>
                 <img src="../public/images/logo_small.png" alt="Web Toucan logo" width="150" />
             </v-toolbar-title>

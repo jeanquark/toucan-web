@@ -40,6 +40,9 @@
                 </div>
             </v-form>
 
+
+
+
             <v-alert type="warning" closable v-if="messageInvalidCaptcha">
                 {{ $t('form.message_invalid_recaptcha') }}
             </v-alert>
@@ -50,9 +53,25 @@
 
         </v-card>
     </v-col>
+    <v-col cols="12">
+        <form action="https://formspree.io/f/movaqpky" method="POST">
+            <label>
+                Your email:
+                <input type="email" name="email" />
+            </label>
+
+            <label>
+                Your message:
+                <textarea name="message"></textarea>
+            </label>
+
+            <button type="submit">Send</button>
+        </form>
+    </v-col>
 </template>
 
 <script setup lang="ts">
+import axios from 'axios'
 
 // Data
 const loading = ref(false)
@@ -88,7 +107,21 @@ const encodeHTML = (s: string) => {
 
 }
 
-const sendContactForm = async () => {
+const sendContactForm = async (e: any) => {
+    try {
+        const data = new FormData(e.target);
+        console.log('data: ', data);
+        const res = await fetch('https://formspree.io/f/xrgnejnw', {
+            method: 'POST',
+            body: data,
+            headers: { Accept: 'application/json' },
+        });
+    } catch (error) {
+        console.log('error: ', error);
+    }
+}
+
+const sendContactForm3 = async () => {
     console.log('sendContactForm');
     // for (let i = 0; i < notifications.length; i++) {
     //     notifications[i].classList.add("hidden");
@@ -131,6 +164,18 @@ const sendContactForm = async () => {
         //         throw 'send_error'
         //     }
         // })
+        // return
+
+        // const res = await fetch('https://dummyjson.com/products/add', {
+        //     method: 'POST',
+        //     headers: { 'Content-Type': 'application/json' },
+        //     body: JSON.stringify({
+        //         title: 'BMW Pencil',
+        //         /* other product data */
+        //     })
+        // })
+        // const abc = await res.json()
+        // console.log('abc: ', abc);
         // return
 
         const response = await fetch("https://formspree.io/f/xrgnejnw", {

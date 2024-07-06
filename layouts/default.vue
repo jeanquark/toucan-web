@@ -1,10 +1,8 @@
 <template>
     <v-app id="app" style="">
-        <!-- Lora,sans-serif -->
-        <v-toolbar color="white" v-cloak class="py-1" style="border: 4px solid lightgreen;">
+        <v-toolbar color="white" v-cloak class="py-1" style="border: 4px solid darkmagenta;">
             <v-toolbar-title>
-                <!-- <img src="../public/images/logo_small.png" alt="Web Toucan logo" width="150" /> -->
-                <!-- <v-img src="../public/images/logo_small.png" alt="Toucan Web logo" width="150" /> -->
+                <v-img src="../public/images/logo_small.png" alt="Toucan Web logo" width="150" />
             </v-toolbar-title>
             <v-spacer></v-spacer>
             <v-toolbar-items class="text-center">

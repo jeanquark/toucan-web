@@ -45,30 +45,41 @@
 
     <!-- Small screens -->
     <v-row no-gutters class="hidden-md-and-up">
-        <!-- <v-container grid-list-xl> -->
-        <!-- <v-layout row wrap align-center> -->
-        <!-- <v-flex xs12 md4> -->
-        <v-card v-for="index in 3" :key="index" class="elevation-0 transparent">
-            <v-card-text class="text-center">
+        <v-card flat class="" v-for="index in 3" :key="index">
+            <v-row no-gutters class="mt-3">
+                    <v-col cols="12" class="text-center">
+                        <v-icon :icon="icons[index - 1]" size="80" :color="'primary'" />
+                    </v-col>
+            </v-row>
+            <v-row no-gutters class="my-2">
+                    <v-col cols="12" class="text-h5 text-center">
+                <div class="headline">{{ $t(`activities[${index - 1}].title`) }}</div>
+
+                    </v-col>
+            </v-row>
+            <v-row no-gutters class="mb-3">
+                    <v-col cols="12" class="text-body-1 text-justify px-2">
+                {{ $t(`activities[${index - 1}].content`) }}
+
+                    </v-col>
+            </v-row>
+
+            <!-- <v-card-text class="text-center">
                 <v-icon size="3em" :color="index % 2 === 0 ? 'secondary' : 'primary'">{{ icons[index - 1] }}</v-icon>
             </v-card-text>
-            <v-card-title primary-title class="layout justify-center">
+            <v-card-title class="text-center">
                 <div class="headline">{{ $t(`activities[${index - 1}].title`) }}</div>
             </v-card-title>
             <v-card-text>
                 {{ $t(`activities[${index - 1}].content`) }}
-            </v-card-text>
+            </v-card-text> -->
         </v-card>
-        <!-- </v-flex> -->
-        <!-- </v-layout> -->
-        <!-- </v-container> -->
     </v-row>
-    <!-- </section> -->
 </template>
 
 <script setup lang="ts">
 const { t } = useI18n()
-let icons = ref(['laptop', 'palette', 'chart-bar'])
+const icons = ref<string[]>(['mdi-laptop', 'mdi-palette', 'mdi-chart-bar'])
 
 const availableLocales = computed(() => {
     // return this.$i18n.locales.filter(i => i.code !== this.$i18n.locale)

@@ -34,7 +34,7 @@
                     </v-col>
                 </v-row>
                 <v-row no-gutters>
-                    <v-col cols="12" md="4" class="text-body-1 my-2 px-4" v-for="index in 3" :key="index">
+                    <v-col cols="12" md="4" class="text-body-1 text-justify my-2 px-4" v-for="index in 3" :key="index">
                         {{ $t(`activities[${index - 1}].content`) }}
                     </v-col>
                 </v-row>

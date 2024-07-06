@@ -40,9 +40,6 @@
                 </div>
             </v-form>
 
-
-
-
             <v-alert type="warning" closable v-if="messageInvalidCaptcha">
                 {{ $t('form.message_invalid_recaptcha') }}
             </v-alert>
@@ -52,21 +49,6 @@
             <v-alert type="error" closable v-if="messageSentError">{{ $t('form.message_error') }}</v-alert>
 
         </v-card>
-    </v-col>
-    <v-col cols="12">
-        <form action="https://formspree.io/f/movaqpky" method="POST">
-            <label>
-                Your email:
-                <input type="email" name="email" />
-            </label>
-
-            <label>
-                Your message:
-                <textarea name="message"></textarea>
-            </label>
-
-            <button type="submit">Send</button>
-        </form>
     </v-col>
 </template>
 

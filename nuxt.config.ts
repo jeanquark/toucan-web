@@ -31,9 +31,17 @@ export default defineNuxtConfig({
 			})
 		},
 		// '@nuxtjs/google-fonts',
-		'@nuxtjs/i18n'
+		'@nuxtjs/i18n',
+		// '@nuxtjs/recaptcha'
 		// '@vee-validate/nuxt'
 	],
+	// recaptcha: {
+    //     hideBadge: false, // Hide badge element (v3 & v2 via size=invisible)
+    //     // language: 'en',   // Recaptcha language (v2)
+    //     siteKey: '6LfQ21cfAAAAAA7315I17B26n4vSVXKzck4m4hjN', // Site key for requests
+    //     version: 2, // Version
+    //     // size: 'normal'
+    // },
 	// googleFonts: {
 	// 	// Options
 	// },

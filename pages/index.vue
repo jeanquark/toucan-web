@@ -1,7 +1,4 @@
 <template>
-    <v-row no-gutters>
-        <h2>Deployment date: 07 Jul 17:18</h2>
-    </v-row>
     <v-row no-gutters> 
         <v-parallax src="/images/image2-3200-min.jpg" max-height="600"
             alt="People working in office (cartoonish)"></v-parallax>
@@ -16,6 +13,9 @@
                 loading="eager"
                 alt="peope working in office (cartoonish)"
             ></v-parallax> -->
+    </v-row>
+    <v-row no-gutters>
+        <h2>Deployment date: 07 Jul 21:49</h2>
     </v-row>
     <what-we-do />
     <v-row no-gutters>

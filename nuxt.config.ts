@@ -1,11 +1,11 @@
 import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 
 export default defineNuxtConfig({
-	generate:{
+	generate: {
 		nojekyll: true, //not working on this version
-	  },
-	  ssr: true, //server side rendered enabled //When true
-	  target: "static", // and static, nuxt generates a hybrid static site
+	},
+	ssr: true, //server side rendered enabled //When true
+	target: "static", // and static, nuxt generates a hybrid static site
 	app: {
 		// baseURL: '/toucan-web/', // For deployment to jeanquark.github.io/toucan-web 
 		// buildAssetsDir: 'assets', // don't use "_" at the begining of the folder name to avoids nojkill conflict
@@ -15,8 +15,6 @@ export default defineNuxtConfig({
 			charset: 'utf-8',
 			viewport: 'width=device-width, initial-scale=1',
 			title: 'Toucan Web',
-			description: 'A company that provides top notch web services',
-			referrer: 'content=origin',
 			link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
 		}
 	},
@@ -38,12 +36,12 @@ export default defineNuxtConfig({
 		// '@vee-validate/nuxt'
 	],
 	// recaptcha: {
-    //     hideBadge: false, // Hide badge element (v3 & v2 via size=invisible)
-    //     // language: 'en',   // Recaptcha language (v2)
-    //     siteKey: '6LfQ21cfAAAAAA7315I17B26n4vSVXKzck4m4hjN', // Site key for requests
-    //     version: 2, // Version
-    //     // size: 'normal'
-    // },
+	//     hideBadge: false, // Hide badge element (v3 & v2 via size=invisible)
+	//     // language: 'en',   // Recaptcha language (v2)
+	//     siteKey: '6LfQ21cfAAAAAA7315I17B26n4vSVXKzck4m4hjN', // Site key for requests
+	//     version: 2, // Version
+	//     // size: 'normal'
+	// },
 	// googleFonts: {
 	// 	// Options
 	// },

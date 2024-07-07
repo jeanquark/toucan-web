@@ -54,13 +54,13 @@ export default {
     testimonials2: [
         {
             title: "Hélène C.",
-            content: "Web toucan has successfully rebuilt our old website. Thanks to the contribution of the new technologies of the web, we now have a platform with a neat design, which corresponds perfectly to our willingness",
+            content: "Web toucan has successfully rebuilt our old website. Thanks to the contribution of the new technologies of the web, we now have a platform with a neat design, which corresponds perfectly to our willingness.",
             image_logo: "buchillonaucarre-logo.png",
             image: "buchillonaucarre.jpg"
         },
         {
             title: "Sabine P.",
-            content: "We asked Web Toucan to redesign our old website so that it can meet higher standards. The mission has been achieved successfully. We now know that we can rely on their skills and competences",
+            content: "We asked Web Toucan to redesign our old website so that it can meet higher standards. The mission has been achieved successfully. We now know that we can rely on their skills and competences.",
             image_logo: "passionetcreations-logo.png",
             image: "passionetcreations.jpg"
         }
@@ -91,7 +91,7 @@ export default {
     },
     "contact": {
         "title": "Contact us",
-        "content": "Use the form below to contact us"
+        "content": "Use the form below to contact us:"
     },
     "form": {
         "name": "Name",

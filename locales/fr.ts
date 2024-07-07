@@ -40,13 +40,13 @@ export default {
     "testimonials": [
         {
             "title": "Hélène C.",
-            "content": "Web toucan a procédé avec succès à la refonte de notre ancien site web. Grâce à l'apport des nouvelles technologies du web, nous avons désormais une plateforme au design soigné, qui correspond parfaitement à notre positionnement",
+            "content": "Web toucan a procédé avec succès à la refonte de notre ancien site web. Grâce à l'apport des nouvelles technologies du web, nous avons désormais une plateforme au design soigné, qui correspond parfaitement à notre positionnement.",
             "image-logo": "buchillonaucarre-logo.png",
             "image": "buchillonaucarre.jpg"
         },
         {
             "title": "Sabine P.",
-            "content": "Nous avons fait appel à Web toucan pour procédé à la refonte de notre ancien site web afin qu’il corresponde à nos attentes, ce qui a été réalisé avec succès! Nous savons désormais que nous pouvons compter sur leur compétence et leur professionalisme",
+            "content": "Nous avons fait appel à Web toucan pour procédé à la refonte de notre ancien site web afin qu’il corresponde à nos attentes, ce qui a été réalisé avec succès! Nous savons désormais que nous pouvons compter sur leur compétence et leur professionalisme.",
             "image-logo": "passionetcreations-logo.png",
             "image": "passionetcreations.jpg"
         }

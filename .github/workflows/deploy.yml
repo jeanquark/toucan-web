@@ -68,7 +68,7 @@ jobs:
       - run: npm ci
       - run: npm test
       - name: Generate
-        run: npm run generate
+        run: npm run generate && touch ./.output/.nojekyll
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:

@@ -3,7 +3,7 @@ import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 export default defineNuxtConfig({
 	app: {
 		// baseURL: '/toucan-web/', // For deployment to jeanquark.github.io/toucan-web 
-		// baseURL: '/', // baseURL: '/<repository>/'
+		baseURL: '/',
 		// buildAssetsDir: 'assets', // don't use "_" at the begining of the folder name to avoids nojkill conflict
 		head: {
 			charset: 'utf-8',

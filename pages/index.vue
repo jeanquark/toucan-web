@@ -19,7 +19,7 @@
     </v-row>
     <what-we-do />
     <v-row no-gutters>
-        <v-parallax src="public/images/image3-3200-min.jpg" height="380" loading="lazy"
+        <v-parallax src="public/images/image3-3200-min.jpg" height="480"
             alt="People around desk at the office (cartoonish)"></v-parallax>
     </v-row>
     <packages />

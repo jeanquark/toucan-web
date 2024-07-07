@@ -79,8 +79,4 @@
 <script setup lang="ts">
 const { t } = useI18n()
 // computed properties
-// const team_members: any[] = computed<any[]>(() => {
-//     return t('team_members')
-//     // return []
-// })
 </script>

@@ -109,8 +109,6 @@ const icons = ref([
 }
 
 .flip-card-back {
-    /* background-color: #2980b9; */
-    /* color: white; */
     transform: rotateY(180deg);
 }
 

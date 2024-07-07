@@ -15,7 +15,7 @@
             ></v-parallax> -->
     </v-row>
     <v-row no-gutters>
-        <h2>Deployment date: 07 Jul 21:49</h2>
+        <!-- <h2>Deployment date: 07 Jul 21:49</h2> -->
     </v-row>
     <what-we-do />
     <v-row no-gutters>

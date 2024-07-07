@@ -6,7 +6,7 @@
                     {{ $t('contact.title') }}
                 </div>
             </v-card-title>
-            <v-card-text class="text-body-1">
+            <v-card-text class="text-h6">
                 {{ $t('contact.content') }}
                 <br /><br />
             </v-card-text>
@@ -53,7 +53,6 @@
 </template>
 
 <script setup lang="ts">
-import axios from 'axios'
 
 // Data
 const loading = ref(false)
@@ -67,15 +66,7 @@ let contactForm = ref({
     email: "",
     message: ""
 })
-// let form = ref({
-//     firstname: '',
-//     lastname: '',
-//     email: '',
-//     message: ''
-// })
-// let person = ref({
-//     surname: ''
-// })
+
 const valid = ref(true)
 
 // Methods

@@ -1,15 +1,15 @@
 <template>
     <v-col cols="12" md="10" lg="6" class="">
         <v-card flat>
-            <v-card-title primary-title class="layout justify-center">
-                <div class="text-h5 text-center">
+            <v-card-title class="justify-center">
+                <p class="text-h5 text-center">
                     {{ $t('company.title') }}
-                </div>
+                </p>
             </v-card-title>
-            <v-card-text class="text-body-1">
-                {{ $t('company.content') }}
+            <v-card-text>
+                <p class="text-h6">{{ $t('company.content') }}</p>
             </v-card-text>
-            <br />
+
             <v-expansion-panels>
                 <v-expansion-panel style="box-shadow: none;">
                     <v-expansion-panel-title>
@@ -21,10 +21,8 @@
                             </v-col>
                             <v-col cols="9" style="text-align: center;">
                                 <div>
-                                    <span class="text-primary text-body-1"> {{ $t('team_members.0.name') }} </span><br /><br /><span
-                                        class="grey--text text--darken-2">
-                                        {{ $t('team_members.0.role') }}
-                                    </span>
+                                    <p class="text-primary text-h6 mb-2"> {{ $t('team_members.0.name') }}</p>
+                                    <p class="grey--text text--darken-2">{{ $t('team_members.0.role') }}</p>
                                 </div>
                             </v-col>
                         </v-row>
@@ -43,10 +41,8 @@
                             </v-col>
                             <v-col cols="9" style="text-align: center;">
                                 <div>
-                                    <span class="text-primary text-body-1"> {{ $t('team_members.1.name') }} </span><br /><br /><span
-                                        class="grey--text text--darken-2">
-                                        {{ $t('team_members.1.role') }}
-                                    </span>
+                                    <p class="text-primary text-h6 mb-2"> {{ $t('team_members.1.name') }}</p>
+                                    <p class="grey--text text--darken-2">{{ $t('team_members.1.role') }}</p>
                                 </div>
                             </v-col>
                         </v-row>
@@ -65,16 +61,14 @@
                             </v-col>
                             <v-col cols="9" style="text-align: center;">
                                 <div>
-                                    <span class="text-primary text-body-1"> {{ $t('team_members.2.name') }} </span><br /><br /><span
-                                        class="grey--text text--darken-2">
-                                        {{ $t('team_members.2.role') }}
-                                    </span>
+                                    <p class="text-primary text-h6 mb-2"> {{ $t('team_members.2.name') }}</p>
+                                    <p class="grey--text text--darken-2">{{ $t('team_members.2.role') }}</p>
                                 </div>
                             </v-col>
                         </v-row>
                     </v-expansion-panel-title>
                     <v-expansion-panel-text>
-                        {{ $t('team_members.2.content') }}
+                        <p>{{ $t('team_members.2.content') }}</p>
                     </v-expansion-panel-text>
                 </v-expansion-panel>
             </v-expansion-panels>
@@ -85,19 +79,8 @@
 <script setup lang="ts">
 const { t } = useI18n()
 // computed properties
-const team_members: any[] = computed<any[]>(() => {
-    return t('team_members')
-    // return []
-})
-// export default {
-//     data() {
-//         return {
-//         }
-//     },
-//     computed: {
-//         team_members() {
-//             return this.$t('team_members')
-//         }
-//     }
-// }
+// const team_members: any[] = computed<any[]>(() => {
+//     return t('team_members')
+//     // return []
+// })
 </script>

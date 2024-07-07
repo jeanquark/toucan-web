@@ -32,7 +32,7 @@
 
         <v-footer :absolute="false" height="auto" color="primary">
             <v-row class="justify-center align-center my-0">
-                <v-col cols="12" class="py-3 text-center text-white">
+                <v-col cols="12" class="py-3 text-center text-h6 text-white">
                     &copy;{{ new Date().getFullYear() }} — <strong class="text-white">Toucan Web</strong><img src="/public/images/swiss_flag.png" width="10px" style="vertical-align: top" />
                 </v-col>
             </v-row>

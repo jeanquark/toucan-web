@@ -65,9 +65,9 @@ export default {
             image: "passionetcreations.jpg"
         }
     ],
-    "company": {
-        "title": "Company info",
-        "content": "We Are a small team of designers, analyst and developers using innovative technics to build websites and help companies to improve digital performance."
+    company: {
+        title: "Company info",
+        content: "We are a small team of designers, analyst and developers using innovative technics to build websites and help companies to improve digital performance."
     },
     team_members: {
         0: {

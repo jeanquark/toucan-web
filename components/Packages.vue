@@ -1,5 +1,4 @@
 <template>
-    <!-- <section> -->
     <v-row no-gutters class="justify-center my-5">
         <v-col cols="12" sm="10" class="my-3">
             <v-row no-gutters class="">
@@ -11,11 +10,10 @@
                                 <v-card-title primary-title class="justify-center">
                                     <div class="text-center">
                                         <h2 class="text-h4 text-white mt-2 mb-0">{{ $t(`packages[${i - 1}].title`) }}</h2>
-                                        <!-- {{ isHovering }} -->
                                     </div>
                                 </v-card-title>
                                 <v-card-text class="" style="padding: 30px">
-                                    <v-list subheader style="border: 1px dashed orange">
+                                    <v-list subheader style="border: 0px dashed orange">
                                         <v-list-item v-for="j in 3" :key="j">
                                             <template v-slot:prepend>
                                                 <v-icon :icon="icons[i - 1][j - 1]" size="x-large" />
@@ -30,19 +28,6 @@
                                                 <v-icon :icon="'mdi-check-circle'" color="green" size="x-large" />
                                             </template>
                                         </v-list-item>
-                                        <!-- <v-list-item>
-                                            <template v-slot:prepend>
-                                                <v-icon :icon="iconsSecondLine[index - 1]" />
-                                            </template>
-                                            <v-list-item-title style="white-space: normal;">
-                                                <slot>
-                                                    {{ $t(`packages[${index - 1}].asset2`) }}
-                                                </slot>
-                                            </v-list-item-title>
-                                            <template v-slot:append>
-                                                <v-icon :icon="'mdi-check-circle-outline'" color="green" />
-                                            </template>
-                                        </v-list-item> -->
                                     </v-list>
                                     <br />
                                     <div class="text-center">
@@ -71,30 +56,16 @@
             </v-row>
         </v-col>
     </v-row>
-    <!-- </section> -->
 </template>
 
 <script setup lang="ts">
 const prices = ref(['500', "1'500", "2'000+"])
 const colors = ref(['#8ac5ff', '#64B5F6', '#1976d2'])
-// const iconsLine = ref<string[]>(['mdi-email', 'mdi-application-settings-outline', 'mdi-code-tags'])
-// const iconsSecondLine = ref<string[]>(['mdi-email', 'mdi-application-settings-outline', 'mdi-code-tags'])
-// const iconsThirdLine = ref(['mdi-magnify', 'mdi-functions', 'mdi-swap-horizontal'])
 const icons = ref([
     ['mdi-application-settings-outline', 'mdi-email', 'mdi-magnify'],
     ['mdi-application-settings-outline', 'mdi-account-cog', 'mdi-function'],
     ['mdi-application-settings-outline', 'mdi-code-tags', 'mdi-swap-horizontal']
 ])
-// export default {
-//     data() {
-//         return {
-//             prices: ['500', "1'500", "2'000+"],
-//             colors: ['#8ac5ff', '#64B5F6', '#1976d2'],
-//             iconsSecondLine: ['email', 'admin_panel_settings', 'code'],
-//             iconsThirdLine: ['search', 'functions', 'compare_arrows'],
-//         }
-//     },
-// }
 </script>
 
 <style scoped>

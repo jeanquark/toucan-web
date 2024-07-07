@@ -1,6 +1,6 @@
 <template>
     <v-row no-gutters>
-        <h2>Deployment date: 07 Jul 16:35</h2>
+        <h2>Deployment date: 07 Jul 17:00</h2>
     </v-row>
     <v-row no-gutters> 
         <v-parallax src="/images/image2-3200-min.jpg" max-height="600"

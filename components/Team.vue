@@ -16,7 +16,7 @@
                         <v-row no-gutters class="align-center">
                             <v-col cols="3">
                                 <v-avatar :size="100" color="blue-grey-lighten-4">
-                                    <v-img alt="Avatar" :src="`images/teams/jeanmarc.jpg`"></v-img>
+                                    <v-img alt="Avatar" :src="`./images/teams/jeanmarc.jpg`"></v-img>
                                 </v-avatar>
                             </v-col>
                             <v-col cols="9" style="text-align: center;">
@@ -60,7 +60,7 @@
                         <v-row no-gutters class="align-center">
                             <v-col cols="3">
                                 <v-avatar :size="100" color="blue-grey-lighten-4">
-                                    <v-img alt="Avatar" :src="`images/teams/mary.jpg`"></v-img>
+                                    <v-img alt="Avatar" :src="`/images/teams/mary.jpg`"></v-img>
                                 </v-avatar>
                             </v-col>
                             <v-col cols="9" style="text-align: center;">

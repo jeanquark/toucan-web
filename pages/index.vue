@@ -1,6 +1,6 @@
 <template>
     <v-row no-gutters>
-        <v-parallax src="public/images/image2-2600-min.jpg" max-height="600"
+        <v-parallax src="/images/image2-3200-min.jpg" max-height="600"
             alt="People working in office (cartoonish)"></v-parallax>
         <!-- <v-parallax
                 srcset="/images/image2-800-min.jpg 800w,
@@ -16,7 +16,7 @@
     </v-row>
     <what-we-do />
     <v-row no-gutters>
-        <v-parallax src="public/images/image3-2600-min.jpg" height="380" loading="lazy"
+        <v-parallax src="public/images/image3-3200-min.jpg" height="380" loading="lazy"
             alt="People around desk at the office (cartoonish)"></v-parallax>
     </v-row>
     <packages />

@@ -18,8 +18,6 @@
                         <v-list-item v-for="(locale, index) in availableLocales" :key="index" @click="switchLocale(locale)">
                             <template v-slot:prepend>
                                 <v-img :src="`images/languages/${locale.code}.png`" :width="30" class="mx-2"></v-img>
-                                <!-- <v-img :src="`../public/images/languages/fr.png`" :width="30" class="mx-2"></v-img> -->
-                                <!-- <img :src="`../images/languages/fr.png`" width="30" class="mx-2" /> -->
                             </template>
                             <v-list-item-title class="text-body-1 text-uppercase">{{ locale.code }}</v-list-item-title>
                         </v-list-item>
@@ -42,10 +40,8 @@
 
 <!-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> -->
 <script setup lang="ts">
-// import { useTheme } from 'vuetify'
 
 const router = useRouter()
-// const theme = useTheme()
 const { t, locale, locales } = useI18n()
 const switchLocalePath = useSwitchLocalePath()
 
@@ -56,9 +52,7 @@ const fixed = ref(false)
 
 // computed proprties
 const activeLocale: any = computed((): any => {
-    // return this.$i18n.locale
     return locale.value
-    return 'en'
 })
 const availableLocales = computed((): any => {
     const array = locales.value as Array<any>

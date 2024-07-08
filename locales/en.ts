@@ -102,13 +102,18 @@ export default {
         "message_success": "Your message was sent successfully. Thank you!",
         "message_error": "We're sorry, an error occured and your message could not be sent.",
         "message_invalid_recaptcha": "Please fill in reCAPTCHA.",
+        "message_validation_error": "Form validation error. Check fields.",
         "submit": "Send"
     },
     "validation": {
-        "is_required": "is required",
-        "max_length": "cannot contain more than",
-        "min_length": "must contain at least",
+        "firstname_is_required": "Firstname is required",
+        "lastname_is_required": "Lastname is required",
+        "email_is_required": "Email is required",
+        "message_is_required": "Message is required",
+        "is_required": "Is required",
+        "max_length": "Cannot contain more than",
+        "min_length": "Must contain at least",
         "characters": "characters",
-        "is_valid": "must be valid"
+        "is_valid": "Must be valid"
     }
 }

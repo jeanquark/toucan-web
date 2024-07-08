@@ -11,20 +11,19 @@
                 <br /><br />
             </v-card-text>
 
-            <v-form ref="contactFormRef" lazy-validation @submit.prevent="sendContactForm">
-                <!-- <v-text-field label="Label" v-model="contact.firstname"></v-text-field> -->
-                <v-text-field name="firstname" :label="`Firstname`" :counter="30" @update:focused="onFocus"
-                    :rules="[() => !!contactForm.firstname || 'This field is required',
-                    () => !!contactForm.firstname && contactForm.firstname.length <= 30 || 'Firstname must be less than 30 characters']" v-model="contactForm.firstname">
+            <v-form ref="contactFormRef" @submit.prevent="sendContactForm">
+                <v-text-field name="firstname" :label="`Firstname`" :counter="30" required @update:focused="onFocus"
+                    :rules="[(v: any) => !!contactForm.firstname || $t('validation.firstname_is_required'),
+                    (v: any) => !!contactForm.firstname && contactForm.firstname.length <= 30 || 'Firstname must be less than 30 characters']" v-model="contactForm.firstname">
                 </v-text-field>
 
-                <v-text-field name="lastname" :label="`${$t('form.lastname')}`" :counter="32"
-                    :rules="[() => !!contactForm.lastname || 'This field is required',
-                    () => !!contactForm.lastname && contactForm.lastname.length <= 30 || 'Lastname must be less than 25 characters']" @update:focused="onFocus" v-model="contactForm.lastname">
+                <v-text-field name="lastname" :label="`${$t('form.lastname')}`" :counter="30" required
+                    :rules="[() => !!contactForm.lastname || $t('validation.lastname_is_required'),
+                    () => !!contactForm.lastname && contactForm.lastname.length <= 30 || 'Lastname must be less than 30 characters']" @update:focused="onFocus" v-model="contactForm.lastname">
                 </v-text-field>
 
-                <v-text-field name="email" :label="`${$t('form.email')}`"
-                    :rules="[(v) => !!v || `${$t('form.email')} ${$t('validation.is_required')}`, (v) => /.+@.+\..+/.test(v) || `${$t('form.email')} ${$t('validation.is_valid')}`]"
+                <v-text-field name="email" :label="`${$t('form.email')}`" required
+                    :rules="[(v) => !!v || `${$t('form.email')} ${$t('validation.email_is_required')}`, (v) => /.+@.+\..+/.test(v) || `${$t('form.email')} ${$t('validation.is_valid')}`]"
                     @update:focused="onFocus" v-model="contactForm.email"></v-text-field>
 
                 <v-textarea name="message" rows="6" :label="`${$t('form.your_message')}`" :rules="[]" @focus="onFocus"
@@ -32,7 +31,6 @@
                 <div class="my-2 text-center">
                     <!-- <recaptcha @error="onError" @success="onSuccess" @expired="onExpired" /> -->
                 </div>
-                <!-- <div class="text-center" v-if="!messageSentSuccess && !messageSentError"> -->
                 <div class="my-2 text-center">
                     <v-btn type="submit" color="secondary" :disabled="!valid" :loading="loading" class="" style=""><span
                             class="text-white">{{ $t('form.submit')
@@ -43,12 +41,17 @@
             <v-alert type="warning" closable v-if="messageInvalidCaptcha">
                 {{ $t('form.message_invalid_recaptcha') }}
             </v-alert>
+            <v-alert type="error" closable v-if="messageValidationError">
+                {{ $t('form.message_validation_error') }}
+            </v-alert>
             <v-alert type="success" closable v-if="messageSentSuccess">
                 {{ $t('form.message_success') }}
             </v-alert>
             <v-alert type="error" closable v-if="messageSentError">{{ $t('form.message_error') }}</v-alert>
 
         </v-card>
+    </v-col>
+    <v-col cols="12">
     </v-col>
 </template>
 
@@ -57,10 +60,13 @@
 // Data
 const loading = ref(false)
 const messageInvalidCaptcha = ref(false)
+const messageValidationError = ref(false)
 const messageSentSuccess = ref(false)
 const messageSentError = ref(false)
 const contactFormRef = ref(null)
-let contactForm = ref({
+const contactForm = ref({
+    access_key: "87109ac5-912e-47fe-a282-e3899f4f7c2d",
+    subject: "New message from toucanweb.ch",
     firstname: "",
     lastname: "",
     email: "",
@@ -71,7 +77,9 @@ const valid = ref(true)
 
 // Methods
 const onFocus = () => {
+    console.log('onFocus')
     messageInvalidCaptcha.value = false
+    messageValidationError.value = false
     messageSentSuccess.value = false
     messageSentError.value = false
 }
@@ -80,77 +88,77 @@ const encodeHTML = (s: string) => {
 
 }
 
-const sendContactForm3 = async (e: any) => {
+const sendContactForm = async () => {
     try {
-        const data = new FormData(e.target);
-        console.log('data: ', data);
-        const res = await fetch('https://formspree.io/f/xrgnejnw', {
-            method: 'POST',
-            body: data,
-            headers: { Accept: 'application/json' },
+        const { valid } = await contactFormRef.value.validate()
+        console.log('valid: ', valid);
+        if (!valid) {
+            messageValidationError.value = true
+            return
+        }
+
+        loading.value = true;
+        const response: any = await $fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            body: contactForm.value,
         });
+        console.log('response: ', response);
+        if (response.success == true) {
+            messageSentSuccess.value = true
+            contactFormRef.value.reset()
+        } else {
+            messageSentError.value = true
+        }
+    } catch (error) {
+        console.log('error: ', error);
+        messageSentError.value = true
+
+    } finally {
+        console.log('finally')
+        loading.value = false
+    }
+}
+const sendContactForm2 = async (e: any) => {
+    try {
+        const res = await fetch('https://script.google.com/macros/s/AKfycbyUbXcwQHeGAjSrDHbIx84PcM1FCEs-S3SnwZjHKQ/exec', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            mode: 'no-cors',
+            body: new URLSearchParams({
+                firstname: `${encodeHTML(contactForm.value.firstname)}`,
+                lastname: `${encodeHTML(contactForm.value.lastname)}`,
+                email: `${encodeHTML(contactForm.value.email)}`,
+                message: `${encodeHTML(contactForm.value.message)}`,
+            }),
+        })
+        console.log('res: ', res);
     } catch (error) {
         console.log('error: ', error);
     }
 }
 
-const sendContactForm = async () => {
+const sendContactForm3 = async () => {
     try {
 
-    console.log('sendContactForm');
-    // for (let i = 0; i < notifications.length; i++) {
-    //     notifications[i].classList.add("hidden");
-    // }
-    console.log('contactForm: ', contactForm);
-    console.log('contactForm.value: ', contactForm.value);
-
-    const formData = new FormData();
-    formData.append("firstname", contactForm.value.firstname)
-    formData.append("lastname", contactForm.value.firstname)
-    formData.append("email", contactForm.value.firstname)
-    formData.append("message", contactForm.value.firstname)
-    console.log('formData: ', formData);
-
-    const firstname = formData.get("firstname")
-    console.log('firstname: ', firstname);
-    // return
-
-    // const sendMessageButton = document.getElementById("sendMessageButton")
-    // sendMessageButton.setAttribute('disabled', '');
-
-        // const reCaptchaValue = grecaptcha.getResponse()
-        // console.log('reCaptchaValue: ', reCaptchaValue);
-        // if (reCaptchaValue.length < 1) {
-        //     document.querySelector(".message.warning").classList.remove("hidden");
-        //     return
+        console.log('sendContactForm');
+        loading.value = true
+        // for (let i = 0; i < notifications.length; i++) {
+        //     notifications[i].classList.add("hidden");
         // }
+        console.log('contactForm: ', contactForm);
+        console.log('contactForm.value: ', contactForm.value);
 
-        // fetch("https://formspree.io/f/xrgnejnw", {
-        //     method: "POST",
-        //     body: formData,
-        //     headers: {
-        //         'Accept': 'application/json'
-        //     }
-        // }).then(response => {
-        //     if (response.ok) {
-        //         console.log("success")
-        //     } else {
-        //         throw 'send_error'
-        //     }
-        // })
-        // return
+        const formData = new FormData();
+        formData.append("firstname", contactForm.value.firstname)
+        formData.append("lastname", contactForm.value.firstname)
+        formData.append("email", contactForm.value.firstname)
+        formData.append("message", contactForm.value.firstname)
+        console.log('formData: ', formData);
 
-        // const res = await fetch('https://dummyjson.com/products/add', {
-        //     method: 'POST',
-        //     headers: { 'Content-Type': 'application/json' },
-        //     body: JSON.stringify({
-        //         title: 'BMW Pencil',
-        //         /* other product data */
-        //     })
-        // })
-        // const abc = await res.json()
-        // console.log('abc: ', abc);
-        // return
+        const firstname = formData.get("firstname")
+        console.log('firstname: ', firstname);
 
         const response = await fetch("https://formspree.io/f/xrgnejnw", {
             method: "POST",
@@ -175,51 +183,6 @@ const sendContactForm = async () => {
         messageSentError.value = true
     } finally {
         // sendMessageButton.removeAttribute('disabled');
-    }
-}
-
-
-const sendContactForm2 = async () => {
-    try {
-        // const token = await this.$recaptcha.getResponse()
-        // console.log('ReCaptcha token:', token)
-        console.log('sendContactForm')
-        // const { valid } = contact.value.validate()
-        const { valid } = await contactFormRef.value?.validate()
-        console.log('valid: ', valid)
-        // return
-        if (valid) {
-            loading.value = true
-            const res = await fetch('https://script.google.com/macros/s/AKfycbyUbXcwQHeGAjSrDHbIx84PcM1FCEs-S3SnwZjHKQ/exec', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: new URLSearchParams({
-                    firstname: `${encodeHTML(contactForm.value.firstname)}`,
-                    lastname: `${encodeHTML(contactForm.value.lastname)}`,
-                    email: `${encodeHTML(contactForm.value.email)}`,
-                    message: `${encodeHTML(contactForm.value.message)}`,
-                }),
-            })
-            // await this.$recaptcha.reset()
-
-            if (res.status === 200) {
-                contactFormRef.value.reset()
-                messageInvalidCaptcha.value = false
-                messageSentError.value = false
-                messageSentSuccess.value = true
-            }
-        }
-    } catch (error) {
-        console.log('error: ', error)
-        if (error == 'Failed to execute') {
-            messageInvalidCaptcha.value = true
-        } else {
-            messageSentSuccess.value = false
-            messageSentError.value = true
-        }
-    } finally {
         loading.value = false
     }
 }
@@ -232,6 +195,7 @@ const onExpired = () => {
 const onError = (error: any) => {
     console.log('Error happened:', error)
 }
+
 
 // export default {
 //     async mounted() {},
@@ -313,3 +277,7 @@ const onError = (error: any) => {
 //     },
 // }
 </script>
+
+<style scoped>
+
+</style>

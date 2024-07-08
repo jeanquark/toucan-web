@@ -15,7 +15,10 @@ export default defineNuxtConfig({
 			charset: 'utf-8',
 			viewport: 'width=device-width, initial-scale=1',
 			title: 'Toucan Web',
+			description: '',
+			keywords: 'Web development, Web design',
 			link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+			referrer: 'content=origin'
 		}
 	},
 	devtools: { enabled: true },
@@ -35,16 +38,6 @@ export default defineNuxtConfig({
 		// '@nuxtjs/recaptcha'
 		// '@vee-validate/nuxt'
 	],
-	// recaptcha: {
-	//     hideBadge: false, // Hide badge element (v3 & v2 via size=invisible)
-	//     // language: 'en',   // Recaptcha language (v2)
-	//     siteKey: '6LfQ21cfAAAAAA7315I17B26n4vSVXKzck4m4hjN', // Site key for requests
-	//     version: 2, // Version
-	//     // size: 'normal'
-	// },
-	// googleFonts: {
-	// 	// Options
-	// },
 	i18n: {
 		lazy: true,
 		langDir: "locales",

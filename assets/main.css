@@ -27,3 +27,10 @@
 .text-secondary {
     color: #FFB300 !important;
 }
+
+.v-alert .mdi-close::before {
+    color: #FFF !important;
+}
+.v-alert .mdi-close-circle::before {
+    color: #FFF !important;
+}

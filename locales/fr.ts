@@ -88,13 +88,18 @@ export default {
         "message_success": "Votre message a bien été envoyé, merci!",
         "message_error": "Nous sommes désolé, une erreur est survenue et votre message n'a pas pu être envoyé.",
         "message_invalid_recaptcha": "Veuillez remplir le reCAPTCHA.",
+        "message_validation_error": "Erreur de validation des champs du formulaire.",
         "submit": "Envoyer"
     },
     "validation": {
-        "is_required": "est requis",
-        "max_length": "ne peut pas dépasser",
-        "min_length": "doit contenir au moins",
+        "firstname_is_required": "Un prénom est requis",
+        "lastname_is_required": "Un nom de famille est requis",
+        "email_is_required": "Un e-mail est requis",
+        "message_is_required": "Un message est requis",
+        "is_required": "Est requis",
+        "max_length": "Ne peut pas dépasser",
+        "min_length": "Doit contenir au moins",
         "characters": "caractères",
-        "is_valid": "doit être valide"
+        "is_valid": "Doit être valide"
     }
 }

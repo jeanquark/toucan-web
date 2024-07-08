@@ -38,16 +38,16 @@
                 </div>
             </v-form>
 
-            <v-alert type="warning" closable v-if="messageInvalidCaptcha">
+            <v-alert type="warning" closable class="text-white" v-if="messageInvalidCaptcha">
                 {{ $t('form.message_invalid_recaptcha') }}
             </v-alert>
-            <v-alert type="error" closable v-if="messageValidationError">
+            <v-alert type="error" closable class="text-white" v-if="messageValidationError">
                 {{ $t('form.message_validation_error') }}
             </v-alert>
-            <v-alert type="success" closable v-if="messageSentSuccess">
+            <v-alert type="success" closable class="text-white" v-if="messageSentSuccess">
                 {{ $t('form.message_success') }}
             </v-alert>
-            <v-alert type="error" closable v-if="messageSentError">{{ $t('form.message_error') }}</v-alert>
+            <v-alert type="error" closable class="text-white" v-if="messageSentError">{{ $t('form.message_error') }}</v-alert>
 
         </v-card>
     </v-col>
@@ -77,7 +77,7 @@ const valid = ref(true)
 
 // Methods
 const onFocus = () => {
-    console.log('onFocus')
+    // console.log('onFocus')
     messageInvalidCaptcha.value = false
     messageValidationError.value = false
     messageSentSuccess.value = false
@@ -93,7 +93,7 @@ const sendContactForm = async () => {
         const { valid } = await contactFormRef.value.validate()
         console.log('valid: ', valid);
         if (!valid) {
-            messageValidationError.value = true
+            messageSentSuccess.value = true
             return
         }
 

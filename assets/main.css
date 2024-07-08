@@ -34,3 +34,9 @@
 .v-alert .mdi-close-circle::before {
     color: #FFF !important;
 }
+.v-alert .mdi-check::before {
+    color: #FFF !important;
+}
+.v-alert .mdi-check-circle::before {
+    color: #FFF !important;
+}
